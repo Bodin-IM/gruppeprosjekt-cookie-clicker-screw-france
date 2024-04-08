@@ -1,7 +1,10 @@
+
+
 body{
     background-color: #000000;
     background-image:url('Images/Bg.png');
-    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   background-size: cover;
   background-size: 100% 100%;
   
@@ -11,21 +14,23 @@ body{
     display: flex;
     position: relative;
     width: 500px;
-    height: 500px;
-    left: 60%;
+    height: 100px;
+    left: 80%;
+    position: relative;
+    display: inline-block;
 
 }
 
 #Click {
-    width: 500px;
-    height: 500px;
-    left: 2500px;
+    width: 266px;
+    height: 272px;
+    left: 2600px;
 }
 
 #Upgrade {
     width: 500px;
-
+    height: 100px;
+    
 }
 
-#buttons {
-}
+
