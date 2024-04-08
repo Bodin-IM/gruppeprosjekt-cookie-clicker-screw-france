@@ -1,0 +1,31 @@
+body{
+    background-color: #000000;
+    background-image:url('Images/Bg.png');
+    background-repeat: repeat;
+  background-size: cover;
+  background-size: 100% 100%;
+  
+}
+
+.Upgrade_buttons{
+    display: flex;
+    position: relative;
+    width: 500px;
+    height: 500px;
+    left: 60%;
+
+}
+
+#Click {
+    width: 500px;
+    height: 500px;
+    left: 2500px;
+}
+
+#Upgrade {
+    width: 500px;
+
+}
+
+#buttons {
+}
