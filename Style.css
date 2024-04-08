@@ -14,7 +14,7 @@ body{
     display: flex;
     position: relative;
     width: 500px;
-    height: 500px;
+    height: 100px;
     left: 80%;
     position: relative;
     display: inline-block;
@@ -29,7 +29,7 @@ body{
 
 #Upgrade {
     width: 500px;
-    height: 200px;
+    height: 100px;
     
 }
 
