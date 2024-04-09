@@ -1,31 +1,25 @@
-/*
- * 
- *
- * 
-*/
+
 
 document.addEventListener("DOMContentLoaded", () => {
     // Variables
-    const clickerObject = document.getElementById("click");
+    const clickerObject = document.getElementById("clicker");
     const cashVisualizer = document.getElementById("cash");
 
     let totalCash = localStorage.getItem("cash");
-    
+
     function onObjectClick() {
         manageCash("inc");
-        console.log(totalCash);
+        log("info", totalCash);
 
         storeData();
     }
 
     function storeData() {
         localStorage.setItem("cash", totalCash);
-        log("info", "Stored user cash value to local storage.")
+        log("info", "Stored user cash value to local storage.");
     }
 
-    function manageCash(type, arg){
-        arg = arg || 0
-
+    function manageCash(type, arg=0){
         switch(type){
             case "inc":
                 totalCash++;
@@ -58,6 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function load(){
         cashVisualizer.innerText = totalCash;
+        log("info", "Updated cash visualizer to cash value");
+
+        log("info", "Loaded");
     }
 
     // Listeners
