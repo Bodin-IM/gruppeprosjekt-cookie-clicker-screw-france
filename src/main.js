@@ -1,64 +1,86 @@
+import { buy, sItems } from "./store.js"
 
+const cashVisualizer = document.getElementById("cash");
+var totalCash = localStorage.getItem("cash");
+
+function getCash() {
+    return totalCash;
+}
+
+function manageCash(type, arg = 0){
+    switch(type){
+        case "inc":
+            totalCash++;
+            cashVisualizer.innerText = totalCash;
+            break;
+        case "dec":
+            totalCash--;
+            cashVisualizer.innerText = totalCash;
+            break;
+        case "set":
+            totalCash = arg;
+            cashVisualizer.innerText = totalCash;
+            break;
+    }
+
+    storeData();
+}
+
+function storeData() {
+    localStorage.setItem("cash", totalCash);
+    log("success", "Stored user cash value to local storage.");
+}
+
+function log(type, msg) {
+    switch(type){
+        case "error":
+            console.error(`[ERROR] -> ${msg}`);
+            break;
+        case "success":
+            console.log(`[SUCCESS] -> ${msg}`);
+            break;
+        case "info":
+            console.info(`[INFO] -> ${msg}`);
+            break;
+        case "warning":
+            console.warn(`[WARNING] -> ${msg}`);
+            break;
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Variables
     const clickerObject = document.getElementById("clicker");
-    const cashVisualizer = document.getElementById("cash");
-
-    let totalCash = localStorage.getItem("cash");
 
     function onObjectClick() {
         manageCash("inc");
-        log("info", totalCash);
 
         storeData();
-    }
-
-    function storeData() {
-        localStorage.setItem("cash", totalCash);
-        log("info", "Stored user cash value to local storage.");
-    }
-
-    function manageCash(type, arg=0){
-        switch(type){
-            case "inc":
-                totalCash++;
-                cashVisualizer.innerText = totalCash;
-                break;
-            case "dec":
-                totalCash--;
-                cashVisualizer.innerText = totalCash;
-                break;
-            case "set":
-                totalCash = arg;
-                cashVisualizer.innerText = totalCash;
-                break;
-        }
-    }
-
-    function log(type, msg) {
-        switch(type){
-            case "error":
-                console.log(`[ERROR] -> ${msg}`);
-                break;
-            case "info":
-                console.log(`[INFO] -> ${msg}`);
-                break;
-            case "warning":
-                console.log(`[WARNING] -> ${msg}`);
-                break;
-        }
     }
 
     function load(){
         cashVisualizer.innerText = totalCash;
         log("info", "Updated cash visualizer to cash value");
 
+        // Event Listeners
+
+        const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
+        upgradeButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const itemName = button.innerText;
+                try {
+                    buy(sItems[itemName]);
+                } catch(err) {
+                    log("error", err);
+                }
+            });
+        });
+
+        clickerObject.addEventListener("click", onObjectClick);
+
         log("info", "Loaded");
     }
 
-    // Listeners
-    clickerObject.addEventListener("click", onObjectClick);
-
     load();
 });
+
+export { log, getCash, manageCash };
