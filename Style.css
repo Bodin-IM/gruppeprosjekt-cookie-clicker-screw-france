@@ -33,3 +33,6 @@ body{
     
 }
 
+.Upgrade_buttons button{
+    background-color: red;
+}
