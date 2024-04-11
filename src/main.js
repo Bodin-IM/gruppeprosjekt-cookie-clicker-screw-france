@@ -55,24 +55,44 @@ document.addEventListener("DOMContentLoaded", () => {
         cashVisualizer.innerText = totalCash;
         log("info", "Updated cash visualizer to cash value");
 
-        const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
-        upgradeButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                const itemName = button.innerText;
-                try {
-                    buy(sItems[itemName]);
-                } catch(err) {
-                    log("error", err);
-                }
-            });
-        });
-
-        clickerObject.addEventListener("click", () => {
-            manageCash("inc");
-        });
-
         log("info", "Loaded");
     }
+
+    const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
+    upgradeButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const itemName = button.innerText;
+            try {
+                buy(sItems[itemName]);
+            } catch(err) {
+                log("error", err);
+            }
+        });
+    });
+    
+    let clicks = 0;
+    let autoclicker = false;
+    clickerObject.addEventListener("click", () => {
+        clicks++;
+
+        if(autoclicker) {
+            alert("You are most likely autoclicking! :-(");
+            return;
+        }
+
+        manageCash("inc");
+    });
+
+    setInterval(() => {
+        if(clicks >= 35){
+            autoclicker = true;
+        } else {
+            autoclicker = false;
+        }
+
+        clicks = 0;
+    }, 1000);
+    
 
     load();
 });
