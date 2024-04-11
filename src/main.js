@@ -51,17 +51,9 @@ function log(type, msg) {
 document.addEventListener("DOMContentLoaded", () => {
     const clickerObject = document.getElementById("clicker");
 
-    function onObjectClick() {
-        manageCash("inc");
-
-        storeData();
-    }
-
     function load(){
         cashVisualizer.innerText = totalCash;
         log("info", "Updated cash visualizer to cash value");
-
-        // Event Listeners
 
         const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
         upgradeButtons.forEach(button => {
@@ -75,7 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        clickerObject.addEventListener("click", onObjectClick);
+        clickerObject.addEventListener("click", () => {
+            manageCash("inc");
+        });
 
         log("info", "Loaded");
     }

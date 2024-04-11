@@ -2,7 +2,10 @@ import { log, getCash, manageCash } from "./main.js";
 
 let inventory = [];
 
-// Her kan man forandre "prisene" til oppgraderingene og legge til items
+/*
+ * Aquí puede cambiar el precio de los artículos -
+ * - este sistema es malo porque si 2 artículos tienen el mismo precio, el sistema se romperá (Yo creo)
+*/
 const sItems = {
     "Mouse": 10,
     "Auto click": 20,
@@ -19,17 +22,23 @@ const sItems = {
 };
 
 function buy(item) {
-    if(canAfford(item) && !inventory.includes(getKeyByValue(sItems, item))) {
-        var preBalance = getCash();
+  if(inventory.includes(getKeyByValue(sItems, item))) {
+    log("error", "User already owns this upgrade.");
+    return;
+  }
 
-        manageCash("set", getCash() - item);
-        log("success", `User can afford item '${getKeyByValue(sItems, item)}'\nPre-balance: ${preBalance} | Post-balance: ${getCash()}\nDiff: ${preBalance - getCash()}`);
+  if(!canAfford(item)) {
+    log("error", "User has insufficient funds.");
+    return;
+  }
 
-        inventory.push(getKeyByValue(sItems, item));
-        log("info", `Pushed ${getKeyByValue(sItems, item)} to user inventory`);
-    } else {
-        log("error", "User has insufficient funds.");
-    }
+  var preBalance = getCash();
+
+  manageCash("set", getCash() - item);
+  log("success", `User can afford item '${getKeyByValue(sItems, item)}'\nPre-balance: ${preBalance} | Post-balance: ${getCash()}\nDiff: ${preBalance - getCash()}`);
+
+  inventory.push(getKeyByValue(sItems, item));
+  log("info", `Pushed ${getKeyByValue(sItems, item)} to user inventory`);
 }
 
 function getKeyByValue(object, value) {
