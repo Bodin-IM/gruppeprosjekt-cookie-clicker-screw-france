@@ -1,6 +1,5 @@
 import { log, getCash, manageCash } from "./main.js";
-
-let inventory = [];
+import { getInventory } from "./user.js";
 
 /*
  * Aquí puede cambiar el precio de los artículos -
@@ -22,7 +21,7 @@ const sItems = {
 };
 
 function buy(item) {
-  if(inventory.includes(getKeyByValue(sItems, item))) {
+  if(getInventory().includes(getKeyByValue(sItems, item))) {
     log("error", "User already owns this upgrade.");
     return;
   }
@@ -37,8 +36,9 @@ function buy(item) {
   manageCash("set", getCash() - item);
   log("success", `User can afford item '${getKeyByValue(sItems, item)}'\nPre-balance: ${preBalance} | Post-balance: ${getCash()}\nDiff: ${preBalance - getCash()}`);
 
-  inventory.push(getKeyByValue(sItems, item));
+  getInventory().push(getKeyByValue(sItems, item));
   log("info", `Pushed ${getKeyByValue(sItems, item)} to user inventory`);
+  log("info", getInventory())
 }
 
 function getKeyByValue(object, value) {
@@ -54,4 +54,4 @@ function canAfford(item) {
     return getCash() >= item;
 }
 
-export { inventory, sItems, buy };
+export { sItems, buy };

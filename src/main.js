@@ -51,6 +51,7 @@ function log(type, msg) {
 document.addEventListener("DOMContentLoaded", () => {
     const clickerObject = document.getElementById("clicker");
 
+    // En el futuro agregaré más para cargar
     function load(){
         cashVisualizer.innerText = totalCash;
         log("info", "Updated cash visualizer to cash value");
