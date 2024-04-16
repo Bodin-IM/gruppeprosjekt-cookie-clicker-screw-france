@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth</title>
+    <link rel="stylesheet" href="css/login_style.css">
+    <script src="https://kit.fontawesome.com/85a36a292d.js" crossorigin="anonymous"></script>
+    <script src="src/auth.js" type="module"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div class="container">
+        <div class="form-box">
+            <h1>Login</h1>
+            <p style="visibility: hidden;"><span id="feedbackText"></span></p>
+            <form onsubmit="return false">
+                <div class="i-group">
+                    <div class="i-field">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Username" id="usernameField" required>
+                    </div>
+                    <div class="i-field">
+                        <i class="fa-solid fa-key"></i>
+                        <input type="password" placeholder="Password" id="passwordField" required>
+                    </div>
+                </div>
+                <div class="buttons" id="authButtons">
+                    <button class="login-button" id="loginButton">Login</button>
+                    <button class="register-button" id="registerButton">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="src/particles/particles.js"></script>
+    <script src="src/particles/app.js"></script>
+</body>
+</html>
