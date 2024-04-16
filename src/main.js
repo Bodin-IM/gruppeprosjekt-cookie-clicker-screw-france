@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function onObjectClick() {
         manageCash("inc");
         log("info", totalCash);
-
+        
         storeData();
     }
 
