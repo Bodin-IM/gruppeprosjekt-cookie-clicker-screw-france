@@ -15,23 +15,37 @@
             <div class = "Upgrade_buttons">
                 <div class=""><button id="Upgrade"><img src="Images/Mous.jpg" alt=""></button>
                 
-                <button id="Upgrade_ac">Auto click, Price: 10</button> 
-                <button id="Upgrade_hg">Homeless guy, Price: 25</button> 
-                <button id="Upgrade_c">Case, Price: 75</button>  
-                <button id="Upgrade_m">Motherboard, Price: 200</button>  
-                <button id="Upgrade_ram">RAM, Price: 500</button>   
-                <button id="Upgrade_cpu">Cpu, Price: 1k</button>
-                <button id="Upgrade_cc">Cpu cooler, Price: 2k</button>
-                <button id="Upgrade_gc">Graphics card, Price: 5k</button>
-                <button id="Upgrade_psu">Psu, Price: 10k</button>
-                <button id="Upgrade_cp">Complete pc, Price: 20k</button>
-                <button id="Upgrade_bt">Bird thing, Price: 50k</button>
-                <button id="Upgrade_bt">Satelite, Price: 100k</button>
+                <button id="Upgrade_ac">Auto click</button> 
+                <button id="Upgrade_hg">Homeless guy</button> 
+                <button id="Upgrade_c">Case</button>  
+                <button id="Upgrade_m">Motherboard</button>  
+                <button id="Upgrade_ram">RAM</button>   
+                <button id="Upgrade_cpu">Cpu</button>
+                <button id="Upgrade_cc">Cpu cooler</button>
+                <button id="Upgrade_gc">Graphics card</button>
+                <button id="Upgrade_psu">Psu</button>
+                <button id="Upgrade_cp">Complete pc</button>
+                <button id="Upgrade_bt">Bird thing</button>
+                <button id="Upgrade_bt">Satelite</button>
             </div>
         </div>
     </div>
 
+    
     <script src="src/main.js"></script>
+    <script>
+        var Upgrade1 = document.getElementById("Upgrade")
+        var autoprice = 10
+        var cash = 22
+        function autoclick_buy() {
+            if (cash >= autoprice) {
+                alert("deez nuts!");
+                return;
+            }
+        }
+        Upgrade1.addEventListener("click", autoclick_buy);
+        </script>
 </body>
+
 </html>
 
