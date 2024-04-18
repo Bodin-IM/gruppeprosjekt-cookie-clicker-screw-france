@@ -1,3 +1,13 @@
+function displayError(error) {
+    document.getElementById('errorAlert').classList.remove('hide');
+    document.getElementById('errorAlert').innerText = error;
+
+    setTimeout(() => {
+        document.getElementById('errorAlert').classList.add('hide');
+        document.getElementById('errorAlert').innerText = "";
+    }, 6000);
+}
+
 function login() {
     const username = document.getElementById("usernameField").value;
     const password = document.getElementById("passwordField").value;
@@ -16,13 +26,26 @@ function login() {
     };
 
     fetch('http://localhost:8080/api/v1/user/login', requestOptions)
-    .then(res => {
-        if(!res.ok) {
-            throw new Error('Network response was not ok')
-        }
+        .then(response => {
+            if(response.ok) {
+                return response.json()
+            }
 
-        return res.text();
-    })
+            return Promise.reject(response);
+        })
+        .then((json) => {
+            localStorage.setItem("token", json.token);
+            console.log("Successfully stored user-token.")
+            
+            window.location.href = "Changelater.html"
+        })
+        .catch((response) => {
+        console.log(response.status, response.statusText);
+
+        response.json().then((json) => {
+            console.log(json);
+        })
+        });
     console.log("Login button pressed");
 }
 

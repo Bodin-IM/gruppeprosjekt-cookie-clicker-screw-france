@@ -130,3 +130,28 @@ input {
     display: flex;
     justify-content: center;
 }
+
+.modal-header {
+    color: white;
+    background: #424243 !important;
+    outline: 0;
+    border: none;
+}
+
+.modal-body {
+    color: white;
+    background: #424243 !important;
+    outline: 0;
+    border: none;
+}
+
+.modal-footer {
+    color: white;
+    background: #424243 !important;
+    outline: 0;
+    border: none;
+}
+
+.hide {
+    display: none;
+}
