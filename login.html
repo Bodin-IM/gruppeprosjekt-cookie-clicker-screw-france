@@ -6,7 +6,7 @@
     <title>Auth</title>
     <link rel="stylesheet" href="css/login_style.css">
     <script src="https://kit.fontawesome.com/85a36a292d.js" crossorigin="anonymous"></script>
-    <script src="src/auth.js" type="module"></script>
+    <script src="src/auth.js"></script>
 </head>
 <body>
     <div id="particles-js"></div>
@@ -27,8 +27,8 @@
                     </div>
                 </div>
                 <div class="buttons" id="authButtons">
-                    <button class="login-button" id="loginButton">Login</button>
-                    <button class="register-button" id="registerButton">Register</button>
+                    <button class="login-button" id="loginButton" onclick="login()">Login</button>
+                    <button class="register-button" id="registerButton" onclick="register()">Register</button>
                 </div>
             </form>
         </div>
