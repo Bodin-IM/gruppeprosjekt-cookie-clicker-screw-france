@@ -1,108 +1,40 @@
-
-
-body{
-    background-color: #000000;
-    background-image:url('/Images/Bg.png');
-    background-repeat: no-repeat;
+body {
+    overflow: hidden;
+    background-image: url('/Images/Bg.png');
     background-attachment: fixed;
-  background-size: cover;
-  background-size: 100% 100%;
-  
+    background-size: 100% 100%;
 }
 
-.Upgrade_buttons{
-    display: flex;
-    position: relative;
-    width: 500px;
-    height: 100px;
-    left: 80%;
-    position: relative;
-    display: inline-block;
-
+.shop {
+    position: fixed;
+    text-align: center;
+    top: 0; 
+    right: 0;
+    height: 100%;
+    width: 200px;
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px; /* Add padding to the shop container */
 }
-
-#Click {
-    width: 272px;
-    height: 266px;
-    left: 2600px;
-}
-
-
-.Upgrade_buttons button{
-    width: 500px;
-    height: 250px;
-    
-}
-
 
 .button_container {
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: column;
+    row-gap: 10px;
 }
 
-.Uac_cont{
+.Upgrade_buttons .button_container {
     display: flex;
-    flex-direction: row;
+    align-items: center; /* Center items vertically */
+    margin-bottom: 20px; /* Add some space between upgrade containers */
 }
 
-.Uac_cont{
-    display: flex;
-    flex-direction: row;
+.Upgrade_buttons img {
+    max-width: 100%; /* Ensure images don't exceed the width of their containers */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add some space between image and button */
 }
 
-.Uhg_cont{
-    display: flex;
-    flex-direction: row;
+.Upgrade_buttons button {
+    flex-grow: 1; /* Allow buttons to expand to fill available space */
 }
-
-.Uc_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Umb_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Uram_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Ucpu_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Ucc_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Ugc_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Upsu_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Ucp_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-.Ubt_cont{
-    display: flex;
-    flex-direction: row;
-}
-
-img{
-    width: 300px;
-    height: 250px;
-}
-

@@ -6,18 +6,19 @@ import { getInventory } from "./user.js";
  * - este sistema es malo porque si 2 artículos tienen el mismo precio, el sistema se romperá (Yo creo)
 */
 const sItems = {
-    "Mouse": 10,
-    "Auto click": 20,
-    "Homeless guy": 30,
-    "Case": 40,
-    "Motherboard": 50,
-    "RAM": 60,
-    "Cpu": 70,
-    "Cpu cooler": 80,
-    "Graphics card": 90,
-    "Psu": 100,
-    "Complete pc": 110,
-    "Bird thing": 361
+    "Mouse": 1,
+    "Auto click": 10,
+    "Homeless guy": 25,
+    "Case": 75,
+    "Motherboard": 200,
+    "RAM": 500,
+    "Cpu": 1000,
+    "Cpu cooler": 2000,
+    "Graphics card": 5000,
+    "Psu": 10000,
+    "Complete pc": 20000,
+    "Bird thing": 50000,
+    "Satelite": 100000
 };
 
 function buy(item) {
