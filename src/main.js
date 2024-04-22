@@ -57,8 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
         log("info", "Loaded");
     }
 
+    function cursor_upg(){
+        
+    }
+
     // Listeners
     clickerObject.addEventListener("click", onObjectClick);
 
     load();
+
+    manageCash("set", totalCash + 100)
+
 });
