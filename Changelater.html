@@ -27,6 +27,15 @@
                     <button id="Upgrade_psu"><img src="Images/PSU.jpg" alt="">Psu</button>
                     <button id="Upgrade_cp"><img src="Images/computr.jpg" alt="">Complete pc</button>
                     <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt="">Bird thing</button>
+                    <button id="Upgrade_st"><img src="Images/satelite.jpg" alt="">Satelite</button>
+                    <button id="Upgrade_st"><img src="Images/Rover.jpg" alt="">Rover</button>
+                    <button id="Upgrade_st"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
+                    <button id="Upgrade_st"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
+                    <button id="Upgrade_st"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
+                    <button id="Upgrade_st"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
+                    <button id="Upgrade_st"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
+                    <button id="Upgrade_st"><img src="" alt="">V01D</button>
+                    <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt="">Jerald</button>
                 </div>
             </div>
             <!-- replace cash system later-->
@@ -36,32 +45,35 @@
                 var Upgrade2 = document.getElementById("Upgrade_ac")
                 var Upgrade3 = document.getElementById("Upgrade_hg")
                 var Upgrade4 = document.getElementById("Upgrade_c")
-                var autoprice = 10
-                var cursorprice = 25
-                var cash = 22 
+                var cursorprice = 10
+                
+                var dollar = 22 
                 
                 function cursor_buy() {
-                    if (cash >= cursorprice) {
-                        alert("cursor bought");
-                        cursorprice = cursorprice + (cursorprice/10)
+                    if (dollar >= cursorprice) {
+                        
+                        dollar -= cursorprice
+                        cursorprice = cursorprice + (cursorprice/2)
+                        console.log(dollar)
+                        console.log(cursorprice)
                         return;
                     }
                 }
                 function autoclick_buy() {
                     if (cash >= autoprice) {
-                        alert("Autoclicker bought");
+                        
                         return;
                     }
                 }
                 function homeless_buy() {
                     if (cash >= autoprice) {
-                        alert("homeless deployed");
+                        
                         return;
                     }
                 }
                 function case_buy() {
                     if (cash >= autoprice) {
-                        alert("case bought");
+                        
                         return;
                     }
                 }
