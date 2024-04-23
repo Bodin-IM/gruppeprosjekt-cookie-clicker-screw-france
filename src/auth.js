@@ -38,7 +38,8 @@ function login() {
                 window.location.href = "Changelater.html";
             })
             .catch((error) => {
-                console.error("Login failed:", error.message || error);
+                console.error(error);
+                return displayError(error);
             });
     }
 }
@@ -108,13 +109,15 @@ function validateAuthentication() {
                     console.log("Authentication token valid, user authorized.")
                     resolve(true);
                 } else if (response.status === 401) {
-                    localStorage.removeItem("token");
-                    window.location.href = "login.html";
                     resolve(false);
                 } else {
                     reject(new Error(`Unexpected status code: ${response.status}`));
                 }
             })
+            .catch(error => {
+                console.error("Error validating authentication:", error);
+                resolve(false); // If there's an error, consider authentication as failed
+            });
     });
 }
 

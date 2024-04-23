@@ -1,10 +1,27 @@
+/*
+ ----- VIKTIG INFORMASJON -----
+
+ Backend serveren er imidlertidig hosted lokalt, innloggning eller registrering vil ikke funke
+ Dette betyr at hvis du prøver å gå på siden, vil du bli omdirigert til login siden
+
+ For å unngå dette, må man skru på en boolean som heter "DevMode", dette vil få nettsiden til å unngå
+ all kommunikasjon til serveren og informasjon vil da lagres lokalt istedenfor i databasen
+*/
+
 import { buy, sItems } from "./store.js";
 import { validateAuthentication } from "./auth.js";
 
 const cashVisualizer = document.getElementById("cash");
+const usernameVisualizer = document.getElementById("username");
+
 var totalCash = localStorage.getItem("cash");
+
 const BATCH_SIZE = 20;
 let clicks = 0;
+
+
+/* GJØR DENNE TIL TRUE */
+let devMode = false;
 
 function getCash() {
     return totalCash;
@@ -26,11 +43,13 @@ function manageCash(type, arg = 0){
             break;
     }
 
-    storeData();
+    if(devMode) {
+        storeCash(totalCash);
+    }
 }
 
-function storeData() {
-    localStorage.setItem("cash", totalCash);
+function storeCash(cash) {
+    localStorage.setItem("cash", cash);
     log("success", "Stored user cash value to local storage.");
 }
 
@@ -60,8 +79,10 @@ function handleBatchClick() {
     clicks++;
     manageCash("inc");
 
-    if (clicks >= BATCH_SIZE) {
-        sendBatchToServer();
+    if(!devMode) {
+        if (clicks >= BATCH_SIZE) {
+            sendBatchToServer();
+        }
     }
 }
 
@@ -94,6 +115,11 @@ function loadUserInformation() {
     fetchUserDetails()
         .then(({ username, cash }) => {
             log("info", `Retrieved user information: ${username} ${cash}`);
+
+            manageCash("set", cash);
+            storeCash(cash);
+
+            usernameVisualizer.innerText = username;
         })
         .catch(error => {
             log("error", `Failed to retrieve user information: ${error.message}`);
@@ -134,15 +160,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("clicker").addEventListener("click", handleBatchClick);
     
-    validateAuthentication()
-        .then(isAuthorized => {
-            if (isAuthorized) {
-                loadUserInformation();
-            }
-        })
-        .catch(error => {
-            console.error("Authentication validation error:", error);
-        });
+    if(devMode) {
+        usernameVisualizer.innerText = 'DEV-MODE';
+        localStorage.removeItem("token");
+    } else {
+        validateAuthentication()
+            .then(isAuthorized => {
+                if (isAuthorized) {
+                    loadUserInformation();
+                } else {
+                    localStorage.removeItem("token");
+                    window.location.href = "login.html";
+                }
+            })
+            .catch(error => {
+                console.error("Authentication validation error:", error);
+            });
+    }
 });
 
 export { log, getCash, manageCash };
