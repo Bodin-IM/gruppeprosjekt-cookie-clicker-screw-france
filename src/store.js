@@ -11,9 +11,9 @@ import { getInventory } from "./user.js";
 * - Quería que los precios de las actualizaciones aumentaran entre un 10% y un 50% cada vez que se compraran.
 */
 const sItems = {
-    "Mouse": 1,
-    "Auto click": 10,
-    "Homeless guy": 50,
+    "Mouse": 10,
+    "Auto click": 25,
+    "Homeless guy": 100,
     "Case": 250,
     "Motherboard": 550,
     "RAM": 1500,
@@ -26,12 +26,12 @@ const sItems = {
     "Satelite": 500000,
     "Rover": 1000000,
     "Dyson Sphere": 4200000,
-    "Black Hole Generator": 8800000,
-    "Time Machine": 3210000,
-    "Dimentional Gate": 100000000,
-    "Parallel Universes": 500000000,
-    "VOID": 1000000000,
-    "Jerald": 6666666666,
+    "Black Hole Generator": 58000000,
+    "Time Machine": 321000000,
+    "Dimentional Gate": 3740000000,
+    "Parallel Universes": 12000000000,
+    "V01D": 100000000000,
+    "Jerald": 666666666666,
 
 
 };
