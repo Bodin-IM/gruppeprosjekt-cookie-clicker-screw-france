@@ -1,5 +1,4 @@
 import { log, getCash, manageCash } from "./main.js";
-import { getInventory } from "./user.js";
 
 /*
  * Aquí puede cambiar el precio de los artículos -
@@ -20,6 +19,12 @@ const sItems = {
     "Bird thing": 50000,
     "Satelite": 100000
 };
+
+let inventory = [];
+
+function getInventory() {
+  return inventory;
+}
 
 function buy(item) {
   if(getInventory().includes(getKeyByValue(sItems, item))) {

@@ -92,6 +92,32 @@ function register() {
     }
 }
 
+function validateAuthentication() {
+    const token = localStorage.getItem("token");
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Authorization': token,
+        }
+    };
+
+    return new Promise((resolve, reject) => {
+        fetch('http://localhost:8080/api/v1/user/verify-token', requestOptions)
+            .then(response => {
+                if (response.status === 200) {
+                    console.log("Authentication token valid, user authorized.")
+                    resolve(true);
+                } else if (response.status === 401) {
+                    localStorage.removeItem("token");
+                    window.location.href = "login.html";
+                    resolve(false);
+                } else {
+                    reject(new Error(`Unexpected status code: ${response.status}`));
+                }
+            })
+    });
+}
+
 let errorTimeout;
 function displayError(error) {
     const errorAlert = document.getElementById('errorAlert');
@@ -112,3 +138,5 @@ function displayError(error) {
         console.error("Element with ID 'errorAlert' not found.")
     }
 }
+
+export { login, register, validateAuthentication };

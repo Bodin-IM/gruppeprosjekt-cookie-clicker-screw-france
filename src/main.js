@@ -1,7 +1,10 @@
-import { buy, sItems } from "./store.js"
+import { buy, sItems } from "./store.js";
+import { validateAuthentication } from "./auth.js";
 
 const cashVisualizer = document.getElementById("cash");
 var totalCash = localStorage.getItem("cash");
+const BATCH_SIZE = 20;
+let clicks = 0;
 
 function getCash() {
     return totalCash;
@@ -48,16 +51,74 @@ function log(type, msg) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const clickerObject = document.getElementById("clicker");
+function updateCashVisualizer() {
+    cashVisualizer.innerText = totalCash;
+    log("info", "Updated cash visualizer to cash value");
+}
 
-    // En el futuro agregaré más para cargar
-    function load(){
-        cashVisualizer.innerText = totalCash;
-        log("info", "Updated cash visualizer to cash value");
+function handleBatchClick() {
+    clicks++;
+    manageCash("inc");
 
-        log("info", "Loaded");
+    if (clicks >= BATCH_SIZE) {
+        sendBatchToServer();
     }
+}
+
+function sendBatchToServer() {
+    const payload = {
+        cash: clicks
+    };
+
+    fetch('http://localhost:8080/api/v1/user/save-cash', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem("token")
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if(response.ok) {
+            clicks = 0;
+        } else {
+            console.error('Failed to send cash batch to server');
+        }
+    })
+    .catch(error => {
+        console.error('Error sending click batch to server:', error);
+    });
+}
+
+function loadUserInformation() {
+    fetchUserDetails()
+        .then(({ username, cash }) => {
+            log("info", `Retrieved user information: ${username} ${cash}`);
+        })
+        .catch(error => {
+            log("error", `Failed to retrieve user information: ${error.message}`);
+        });
+}
+
+function fetchUserDetails() {
+    return fetch('http://localhost:8080/api/v1/user/details', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem("token")
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Failed to retrieve user information');
+        }
+    });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateCashVisualizer();
 
     const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
     upgradeButtons.forEach(button => {
@@ -70,32 +131,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    document.getElementById("clicker").addEventListener("click", handleBatchClick);
     
-    let clicks = 0;
-    let autoclicker = false;
-    clickerObject.addEventListener("click", () => {
-        clicks++;
-
-        if(autoclicker) {
-            alert("You are most likely autoclicking! :-(");
-            return;
-        }
-
-        manageCash("inc");
-    });
-
-    setInterval(() => {
-        if(clicks >= 35){
-            autoclicker = true;
-        } else {
-            autoclicker = false;
-        }
-
-        clicks = 0;
-    }, 1000);
-    
-
-    load();
+    validateAuthentication()
+        .then(isAuthorized => {
+            if (isAuthorized) {
+                loadUserInformation();
+            }
+        })
+        .catch(error => {
+            console.error("Authentication validation error:", error);
+        });
 });
 
 export { log, getCash, manageCash };
