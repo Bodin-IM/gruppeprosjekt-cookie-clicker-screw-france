@@ -33,6 +33,8 @@ function getCash() {
  * "DEC" betyr 'Decrease', som vil forminske med 1 hver gang
  * "SET" kan man bruke for å sette totalCash til et bestemt tall
 */
+
+/* EDIT: omg æ trudde at inkremere va increment på norsk HAHAHAHHAHA (æ meinte å øk) */
 function manageCash(type, arg = 0){
     switch(type){
         case "inc":
