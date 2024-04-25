@@ -78,12 +78,13 @@ function updateCashVisualizer() {
 function handleBatchClick() {
     clicks++;
     manageCash("inc");
-
+/*
     if(!devMode) {
         if (clicks >= BATCH_SIZE) {
             sendBatchToServer();
         }
     }
+    */
 }
 
 function sendBatchToServer() {
@@ -102,6 +103,7 @@ function sendBatchToServer() {
     .then(response => {
         if(response.ok) {
             clicks = 0;
+            log("info", "Sent batch to server.")
         } else {
             console.error('Failed to send cash batch to server');
         }
@@ -143,8 +145,18 @@ function fetchUserDetails() {
     });
 }
 
+function autoSave() {
+    setInterval(sendBatchToServer, 3000);
+    log("info", "Auto-saved.")
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     updateCashVisualizer();
+
+    setInterval(() => {
+        sendBatchToServer();
+        log("info", "Auto-saved.");
+    }, 120000);
 
     const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
     upgradeButtons.forEach(button => {
@@ -159,6 +171,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.getElementById("clicker").addEventListener("click", handleBatchClick);
+    document.getElementById("save").addEventListener("click", () => {
+        sendBatchToServer();
+        log("info", "Successfully saved progress.")
+    });
     
     if(devMode) {
         usernameVisualizer.innerText = 'DEV-MODE';
