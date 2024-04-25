@@ -1,14 +1,7 @@
+/* Importerer funksjoner fra main.js */
 import { log, getCash, manageCash } from "./main.js";
 
-/*
- * Aquí puede cambiar el precio de los artículos -
- * - este sistema es malo porque si 2 artículos tienen el mismo precio, el sistema se romperá (Yo creo)
-*/
-/*
-* Se corrigieron algunos de los precios debido a cómo funciona la escala (la actualización aumenta el precio cada vez que se compran)
-* - y agregué algunas de las otras actualizaciones que aún no se muestran en este script.
-* - Quería que los precios de las actualizaciones aumentaran entre un 10% y un 50% cada vez que se compraran.
-*/
+// Dictionary som inneholder alle butikk-items
 const sItems = {
     "Mouse": 1,
     "Auto click": 10,
@@ -31,39 +24,50 @@ const sItems = {
     "Parallel Universes": 500000000,
     "VOID": 1000000000,
     "Jerald": 6666666666,
-
-
 };
 
+// Brukerens inventory
 let inventory = [];
 
 function getInventory() {
   return inventory;
 }
 
+/* En funksjon brukt for å kjøpe en item */
 function buy(item) {
+  /* Hvis brukerens inventory allerede inneholder "item" */
   if(getInventory().includes(getKeyByValue(sItems, item))) {
     log("error", "User already owns this upgrade.");
     return;
   }
 
+  /* Hvis brukeren ikke har nok penger */
   if(!canAfford(item)) {
     log("error", "User has insufficient funds.");
     return;
   }
 
+  /* Hvor mye penger brukeren har før kjøpet */
   var preBalance = getCash();
 
+  /* Oppdaterer hvor mye penger brukeren har */
   manageCash("set", getCash() - item);
   log("success", `User can afford item '${getKeyByValue(sItems, item)}'\nPre-balance: ${preBalance} | Post-balance: ${getCash()}\nDiff: ${preBalance - getCash()}`);
 
+  /* "item" blir lagt til i inventory */
   getInventory().push(getKeyByValue(sItems, item));
   log("info", `Pushed ${getKeyByValue(sItems, item)} to user inventory`);
   log("info", getInventory())
 }
 
+/*
+ * Denne funksjonen finner navnet til et item via prisen
+ * Selvfølgelig er dette et dårlig system fordi hvis 2 ting har samme pris vil det ikke funke.
+*/
 function getKeyByValue(object, value) {
+  /* For alle keys i et objekt/liste */
     for (const key in object) {
+      // Sjekk om objektet har den spesifiserte nøkkelen og om verdien knyttet til den nøkkelen matcher den gitte verdien.
       if (object.hasOwnProperty(key) && object[key] === value) {
         return key;
       }

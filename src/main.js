@@ -19,14 +19,20 @@ var totalCash = localStorage.getItem("cash");
 const BATCH_SIZE = 20;
 let clicks = 0;
 
-
 /* GJØR DENNE TIL TRUE */
 let devMode = false;
 
+/* Unødvendig funksjon, getters er ikke nødvending i JS */
 function getCash() {
     return totalCash;
 }
 
+/*
+ * Denne funksjonen brukes til å "administrere" brukerens cash
+ * "INC" betyr 'Increment', som vil inkremere med 1 hver gang
+ * "DEC" betyr 'Decrease', som vil forminske med 1 hver gang
+ * "SET" kan man bruke for å sette totalCash til et bestemt tall
+*/
 function manageCash(type, arg = 0){
     switch(type){
         case "inc":
@@ -48,11 +54,18 @@ function manageCash(type, arg = 0){
     }
 }
 
+/*
+ * Lagrer "cash" i local-storage    (F12 -> Storage -> Local Storage)
+*/
 function storeCash(cash) {
     localStorage.setItem("cash", cash);
     log("success", "Stored user cash value to local storage.");
 }
 
+/*
+ * Denne funksjonen brukes bare til debugging
+ * Det er egentlig bare console.log men med formatting.
+*/
 function log(type, msg) {
     switch(type){
         case "error":
@@ -70,11 +83,16 @@ function log(type, msg) {
     }
 }
 
+
+/* Oppdaterer cashVisualizer (h1-taggen som sier Cash:) til totalCash */
 function updateCashVisualizer() {
     cashVisualizer.innerText = totalCash;
     log("info", "Updated cash visualizer to cash value");
 }
 
+/*
+ * Denne funksjonen brukes for onclick event i DOMContentLoaded
+*/
 function handleBatchClick() {
     clicks++;
     manageCash("inc");
@@ -87,6 +105,12 @@ function handleBatchClick() {
     */
 }
 
+/*
+ * sendBatchToServer funksjonen sender en POST request til API-endepunktet "save-cash"
+ * Her sender vi et payload som forteller API'en hvor mange ganger vi har klikket
+ * Hvis svaret til API'en er ok (http status kode: 2xx) - da resetter vi hvor mange ganger vi har klikket.
+ * API'en vil til slutt oppdatere brukerens cash i databasen
+*/
 function sendBatchToServer() {
     const payload = {
         cash: clicks
@@ -113,10 +137,18 @@ function sendBatchToServer() {
     });
 }
 
+/*
+ * Henter brukerdetaljer og oppdaterer UI'en med informasjonen vi hentet
+ * Hvis "cash" er null, setter du den til 0 sånn at det ser bra ut på UI'en 
+*/
 function loadUserInformation() {
     fetchUserDetails()
         .then(({ username, cash }) => {
             log("info", `Retrieved user information: ${username} ${cash}`);
+
+            if (cash == null) {
+                cash = 0;
+            }
 
             manageCash("set", cash);
             storeCash(cash);
@@ -127,7 +159,10 @@ function loadUserInformation() {
             log("error", `Failed to retrieve user information: ${error.message}`);
         });
 }
-
+/*
+ * En funksjon hvor vi sender en GET request til API-endepunktet api/v1/user/details
+ * Hvis API'en svarer med brukerinformasjonen da returnerer vi svaret som JSON
+*/
 function fetchUserDetails() {
     return fetch('http://localhost:8080/api/v1/user/details', {
         method: 'GET',
@@ -145,20 +180,32 @@ function fetchUserDetails() {
     });
 }
 
-function autoSave() {
-    setInterval(sendBatchToServer, 3000);
-    log("info", "Auto-saved.")
+/* En funksjon som kan brukes for å kjapt lagre hvor mye cash brukeren har. */
+function save() {
+    sendBatchToServer();
+    log("info", "Saved.");
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Oppdaterer visualizer først
     updateCashVisualizer();
 
+    /*
+     * Hvert andre minutt skal cash lagres til database
+     * 120000 MS = 2.0 MIN
+    */
     setInterval(() => {
         sendBatchToServer();
         log("info", "Auto-saved.");
     }, 120000);
 
     const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
+
+    /*
+     * Hver upgrade knapp får sin egen click event listener
+     * Etter dette, får vi navnet til hver knapp (itemName variabel)
+     * Til slutt prøver vi å kjøpe det fra sItems listen med itemName som key
+    */
     upgradeButtons.forEach(button => {
         button.addEventListener("click", () => {
             const itemName = button.innerText;
@@ -172,20 +219,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("clicker").addEventListener("click", handleBatchClick);
     document.getElementById("save").addEventListener("click", () => {
-        sendBatchToServer();
-        log("info", "Successfully saved progress.")
+        save();
+    });
+    document.getElementById("logout").addEventListener("click", () => {
+        save();
+
+        // Fjern keys fra local storage
+        localStorage.removeItem("token");
+        localStorage.removeItem("cash")
+
+        // Redirect til login side
+        window.location.href = "login.html";
     });
     
+
+    // Hvis devMode variabelen er "true"
     if(devMode) {
+        // Sett brukernavnet til "DEV-MODE"
         usernameVisualizer.innerText = 'DEV-MODE';
+
+        // Fjern token fra local storage i tilfelle den eksisterer
         localStorage.removeItem("token");
-    } else {
+    } else { 
+        /*
+         * validateAuthentication er en funksjon som verifiserer JWT-tokens for å sjekke om de er expired eller tuklet med
+        */
         validateAuthentication()
             .then(isAuthorized => {
+                // Hvis token er OK
                 if (isAuthorized) {
+                    // Load bruker informasjon
                     loadUserInformation();
-                } else {
+                } else { // Hvis token ikke er OK (enten tuklet med eller expired)
+                    // Fjern token fra local storage
                     localStorage.removeItem("token");
+
+                    // Redirect til login siden for nytt forsøk
                     window.location.href = "login.html";
                 }
             })
