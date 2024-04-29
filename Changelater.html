@@ -8,6 +8,9 @@
     <script type="module" src="src/main.js"></script>
 </head>
 <body>
+    <button id="save" style="width: 250px; height: 50px;">Save</button>
+    <button id="logout" style="width: 250px; height: 50px;">Log Out</button>
+    <h1>Username: <span id="username"></span></h1>
     <h1>Cash: <span id="cash"></span></h1> <!-- La stå! -->
     <button id="Click"><img src="images/rat.jpg" alt="" id="clicker"></button>
     <div class="shop">
@@ -27,10 +30,63 @@
                     <button id="Upgrade_psu"><img src="Images/PSU.jpg" alt="">Psu</button>
                     <button id="Upgrade_cp"><img src="Images/computr.jpg" alt="">Complete pc</button>
                     <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt="">Bird thing</button>
+                    <button id="Upgrade_st"><img src="Images/satelite.jpg" alt="">Satelite</button>
+                    <button id="Upgrade_st"><img src="Images/Rover.jpg" alt="">Rover</button>
+                    <button id="Upgrade_st"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
+                    <button id="Upgrade_st"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
+                    <button id="Upgrade_st"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
+                    <button id="Upgrade_st"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
+                    <button id="Upgrade_st"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
+                    <button id="Upgrade_st"><img src="" alt="">V01D</button>
+                    <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt="">Jerald</button>
                 </div>
             </div>
-        </div>
-        </body>
+            <!-- replace cash system later-->
+            <script src="src/main.js"></script>
+            <script>
+                var Upgrade1 = document.getElementById("Upgrade")
+                var Upgrade2 = document.getElementById("Upgrade_ac")
+                var Upgrade3 = document.getElementById("Upgrade_hg")
+                var Upgrade4 = document.getElementById("Upgrade_c")
+                var cursorprice = 10
+                
+                var dollar = 22 
+                
+                function cursor_buy() {
+                    if (dollar >= cursorprice) {
+                        
+                        dollar -= cursorprice
+                        cursorprice = cursorprice + (cursorprice/2)
+                        console.log(dollar)
+                        console.log(cursorprice)
+                        return;
+                    }
+                }
+                function autoclick_buy() {
+                    if (cash >= autoprice) {
+                        
+                        return;
+                    }
+                }
+                function homeless_buy() {
+                    if (cash >= autoprice) {
+                        
+                        return;
+                    }
+                }
+                function case_buy() {
+                    if (cash >= autoprice) {
+                        
+                        return;
+                    }
+                }
+                Upgrade2.addEventListener("click", autoclick_buy);
+                Upgrade1.addEventListener("click", cursor_buy);
+                Upgrade3.addEventListener("click", homeless_buy);
+                Upgrade4.addEventListener("click", case_buy);
+                
+                </script>
+        </body> <!--the code above is too messy (or not idk)-->
         </html>
         
         <!--<div class=""><button id="Upgrade"><img src="Images/Mous.jpg" alt=""></button>
