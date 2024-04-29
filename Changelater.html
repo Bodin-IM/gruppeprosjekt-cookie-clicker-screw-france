@@ -42,17 +42,43 @@
                 </div>
             </div>
             <!-- replace cash system later-->
-            <script src="src/main.js"></script>
+            <script src="src/main.js" type="module"></script>
             <script>
                 var Upgrade1 = document.getElementById("Upgrade")
                 var Upgrade2 = document.getElementById("Upgrade_ac")
                 var Upgrade3 = document.getElementById("Upgrade_hg")
                 var Upgrade4 = document.getElementById("Upgrade_c")
                 var cursorprice = 10
-                
-                var dollar = 22 
+                var autoclickprice = 25
+                var cursor = 0
+                var autoclicker = 0
+                var dollar = 222222
                 
                 function cursor_buy() {
+                    if (dollar >= cursorprice) {
+                        
+                        dollar -= cursorprice
+                        cursorprice = cursorprice + Math.round(cursorprice/2)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", cursorprice)
+                        cursor++
+                        console.log("Cursor count", cursor)
+                        return;
+                    }
+                }
+                function autoclick_buy() {
+                    if (dollar >= autoclickprice) {
+                        
+                        dollar -= cursorprice
+                        autoclickprice = autoclickprice + Math.round(autoclickprice/2)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", autoclickprice)
+                        autoclicker++
+                        console.log("autoclicker count:", autoclicker)
+                        return;
+                    }
+                }
+                function jerald_buy() {
                     if (dollar >= cursorprice) {
                         
                         dollar -= cursorprice
@@ -63,24 +89,7 @@
                         return;
                     }
                 }
-                function autoclick_buy() {
-                    if (cash >= autoprice) {
-                        
-                        return;
-                    }
-                }
-                function homeless_buy() {
-                    if (cash >= autoprice) {
-                        
-                        return;
-                    }
-                }
-                function case_buy() {
-                    if (cash >= autoprice) {
-                        
-                        return;
-                    }
-                }
+                
                 Upgrade2.addEventListener("click", autoclick_buy);
                 Upgrade1.addEventListener("click", cursor_buy);
                 Upgrade3.addEventListener("click", homeless_buy);
