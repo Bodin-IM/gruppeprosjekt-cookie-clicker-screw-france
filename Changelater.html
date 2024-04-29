@@ -49,37 +49,47 @@
                 var Upgrade3 = document.getElementById("Upgrade_hg")
                 var Upgrade4 = document.getElementById("Upgrade_c")
                 var cursorprice = 10
-                
-                var dollar = 22 
+                var autoclickprice = 25
+                var cursor = 0
+                var autoclicker = 0
+                var dollar = 222222
                 
                 function cursor_buy() {
+                    if (dollar >= cursorprice) {
+                        
+                        dollar -= cursorprice
+                        cursorprice = cursorprice + Math.round(cursorprice/2)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", cursorprice)
+                        cursor++
+                        console.log("Cursor count", cursor)
+                        return;
+                    }
+                }
+                function autoclick_buy() {
+                    if (dollar >= autoclickprice) {
+                        
+                        dollar -= cursorprice
+                        autoclickprice = autoclickprice + Math.round(autoclickprice/2)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", autoclickprice)
+                        autoclicker++
+                        console.log("autoclicker count:", autoclicker)
+                        return;
+                    }
+                }
+                function jerald_buy() {
                     if (dollar >= cursorprice) {
                         
                         dollar -= cursorprice
                         cursorprice = cursorprice + (cursorprice/2)
                         console.log(dollar)
                         console.log(cursorprice)
+                        location.href = "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi41M_pstiFAxW8GRAIHVl5CFUQwqsBegQIChAF&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ&usg=AOvVaw0aHtehaphMhOCAkCydRLZU&opi=89978449";
                         return;
                     }
                 }
-                function autoclick_buy() {
-                    if (cash >= autoprice) {
-                        
-                        return;
-                    }
-                }
-                function homeless_buy() {
-                    if (cash >= autoprice) {
-                        
-                        return;
-                    }
-                }
-                function case_buy() {
-                    if (cash >= autoprice) {
-                        
-                        return;
-                    }
-                }
+                
                 Upgrade2.addEventListener("click", autoclick_buy);
                 Upgrade1.addEventListener("click", cursor_buy);
                 Upgrade3.addEventListener("click", homeless_buy);
