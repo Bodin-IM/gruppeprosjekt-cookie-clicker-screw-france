@@ -60,6 +60,7 @@
                 var homelessprice = 100
                 var autoclickprice = 25
                 var cpuprice = 4000
+                var coolerprice = 12500
                 var cursor = 0
                 var autoclicker = 0
                 var homeless = 0
@@ -67,13 +68,14 @@
                 var mother = 0
                 var ram = 0
                 var cpu = 0
-                var dollar = 222222
+                var cooler = 0
+                var dollar = 22222222222222222222222
                 
                 function cursor_buy() {
                     if (dollar >= cursorprice) {
                         
                         dollar = dollar - cursorprice
-                        cursorprice = cursorprice + Math.round(cursorprice/2)
+                        cursorprice = cursorprice + Math.round(cursorprice/3)
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", cursorprice)
                         cursor++
@@ -85,7 +87,7 @@
                     if (dollar >= autoclickprice) {
                         
                         dollar = dollar - cursorprice
-                        autoclickprice = autoclickprice + Math.round(autoclickprice/2)
+                        autoclickprice = autoclickprice + Math.round(autoclickprice/3)
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", autoclickprice)
                         autoclicker++
@@ -97,7 +99,7 @@
                     if (dollar >= homelessprice) {
                         
                         dollar = dollar - homelessprice
-                        homelessprice = homelessprice + Math.round(homelessprice/2)
+                        homelessprice = homelessprice + Math.round(homelessprice/3)
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", homelessprice)
                         homeless++
@@ -109,7 +111,7 @@
                     if (dollar >= caseprice) {
                         
                         dollar = dollar - caseprice
-                        caseprice = caseprice + Math.round(caseprice/2)
+                        caseprice = caseprice + Math.round(caseprice/3)
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", caseprice)
                         Case++
@@ -121,7 +123,7 @@
                     if (dollar >= motherprice) {
                         
                         dollar = dollar - motherprice
-                        motherprice = motherprice + Math.round(motherprice/2)
+                        motherprice = motherprice + Math.round(motherprice/3)
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", motherprice)
                         mother++
@@ -133,7 +135,7 @@
                     if (dollar >= ramprice) {
                         
                         dollar = dollar - ramprice
-                        ramprice = ramprice + Math.round(ramprice/2)
+                        ramprice = ramprice + Math.round(ramprice/3)
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", ramprice)
                         ram++
@@ -145,11 +147,23 @@
                     if (dollar >= cpuprice) {
                         
                         dollar = dollar - cpuprice
-                        cpuprice = cpuprice + Math.round(cpuprice/2)
+                        cpuprice = cpuprice + Math.round(cpuprice/3)
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", cpuprice)
                         cpu++
                         console.log("cpu count:", cpu)
+                        return;
+                    }
+                }
+                function cooler_buy() {
+                    if (dollar >= cpuprice) {
+                        
+                        dollar = dollar - coolerprice
+                        coolerprice = coolerprice + Math.round(coolerprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", coolerprice)
+                        cooler++
+                        console.log("cooler count:", cooler)
                         return;
                     }
                 }
@@ -172,7 +186,7 @@
                 Upgrade5.addEventListener("click", mother_buy);
                 Upgrade6.addEventListener("click", ram_buy);
                 Upgrade7.addEventListener("click", cpu_buy);
-                Upgrade8.addEventListener("click", case_buy);
+                Upgrade8.addEventListener("click", cooler_buy);
                 
                 </script>
         </body> <!--the code above is too messy (or not idk)-->
