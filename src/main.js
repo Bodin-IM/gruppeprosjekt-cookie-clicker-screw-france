@@ -20,7 +20,7 @@ const BATCH_SIZE = 20;
 let clicks = 0;
 
 /* GJØR DENNE TIL TRUE */
-let devMode = true;
+let devMode = false;
 
 /* Unødvendig funksjon, getters er ikke nødvending i JS */
 function getCash() {
