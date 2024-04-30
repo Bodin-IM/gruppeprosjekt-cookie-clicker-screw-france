@@ -49,14 +49,24 @@
                 var Upgrade2 = document.getElementById("Upgrade_ac")
                 var Upgrade3 = document.getElementById("Upgrade_hg")
                 var Upgrade4 = document.getElementById("Upgrade_c")
+                var Upgrade5 = document.getElementById("Upgrade_mb")
+                var Upgrade6 = document.getElementById("Upgrade_ram")
+                var Upgrade7 = document.getElementById("Upgrade_cpu")
+                var Upgrade8 = document.getElementById("Upgrade_cc")
                 var cursorprice = 10
+                var motherprice = 550
                 var caseprice = 250
+                var ramprice = 1500
                 var homelessprice = 100
                 var autoclickprice = 25
+                var cpuprice = 4000
                 var cursor = 0
                 var autoclicker = 0
                 var homeless = 0
                 var Case = 0
+                var mother = 0
+                var ram = 0
+                var cpu = 0
                 var dollar = 222222
                 
                 function cursor_buy() {
@@ -107,6 +117,42 @@
                         return;
                     }
                 }
+                function mother_buy() {
+                    if (dollar >= motherprice) {
+                        
+                        dollar = dollar - motherprice
+                        motherprice = motherprice + Math.round(motherprice/2)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", motherprice)
+                        mother++
+                        console.log("Motherboard count:", mother)
+                        return;
+                    }
+                }
+                function ram_buy() {
+                    if (dollar >= ramprice) {
+                        
+                        dollar = dollar - ramprice
+                        ramprice = ramprice + Math.round(ramprice/2)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", ramprice)
+                        ram++
+                        console.log("ram count:", ram)
+                        return;
+                    }
+                }
+                function cpu_buy() {
+                    if (dollar >= cpuprice) {
+                        
+                        dollar = dollar - cpuprice
+                        cpuprice = cpuprice + Math.round(cpuprice/2)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", cpuprice)
+                        cpu++
+                        console.log("cpu count:", cpu)
+                        return;
+                    }
+                }
                 function jerald_buy() {
                     if (dollar >= cursorprice) {
                         
@@ -123,6 +169,10 @@
                 Upgrade1.addEventListener("click", cursor_buy);
                 Upgrade3.addEventListener("click", homeless_buy);
                 Upgrade4.addEventListener("click", case_buy);
+                Upgrade5.addEventListener("click", mother_buy);
+                Upgrade6.addEventListener("click", ram_buy);
+                Upgrade7.addEventListener("click", cpu_buy);
+                Upgrade8.addEventListener("click", case_buy);
                 
                 </script>
         </body> <!--the code above is too messy (or not idk)-->
