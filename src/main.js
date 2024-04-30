@@ -10,6 +10,7 @@
 
 import { buy, sItems } from "./store.js";
 import { validateAuthentication } from "./auth.js";
+import { check } from "./achievement.js";
 
 const cashVisualizer = document.getElementById("cash");
 const usernameVisualizer = document.getElementById("username");
@@ -95,7 +96,9 @@ function updateCashVisualizer() {
 */
 function handleBatchClick() {
     clicks++;
+    
     manageCash("inc");
+    check();
 /*
     if(!devMode) {
         if (clicks >= BATCH_SIZE) {
@@ -189,6 +192,7 @@ function save() {
 document.addEventListener("DOMContentLoaded", () => {
     // Oppdaterer visualizer først
     updateCashVisualizer();
+    check()
 
     /*
      * Hvert andre minutt skal cash lagres til database
