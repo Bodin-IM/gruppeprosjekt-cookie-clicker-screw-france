@@ -28,8 +28,10 @@ const clickAchievements = {
     }
 };
 
+/* Empty list that will hold all collected achievements*/
 let collectedAchievements = [];
 
+/* Checks whether or not the user has reached an achievement,if they have, collect it.  */
 function check() {
     for(const achievement in clickAchievements) {
         const goal = clickAchievements[achievement]["goal"];
@@ -46,16 +48,12 @@ function check() {
     }
 }
 
+/* Collects specified achievement by pushing to collectedAchievements and adding to localStorage */
 function collect(achievement) {
     collectedAchievements.push(achievement);
     localStorage.setItem("achievements", collectedAchievements.toString());
 
     createAchievementNotification(achievement, clickAchievements[achievement]["goal"], clickAchievements[achievement]["message"]);
-
-    log(
-        "success",
-        `Congratulations! You have unlocked the ${achievement} achievement for ${clickAchievements[achievement]} clicks!`
-    );
 }
 
 export { check };
