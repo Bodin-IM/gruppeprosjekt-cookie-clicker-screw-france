@@ -1,4 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
     overflow: hidden;
     background-image: url('/Images/Bg.png');
     background-attachment: fixed;
@@ -38,3 +49,69 @@ body {
 .Upgrade_buttons button {
     flex-grow: 1; /* Allow buttons to expand to fill available space */
 }
+
+.notifications {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 1em;
+    padding: 2em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 470px;
+}
+
+.notification {
+    background: linear-gradient(120deg, #cec006 0%, #2d303e 35%);
+    color: #898c97;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1em;
+    gap: 1em;
+    cursor: default;
+    animation: fadeOut 400ms ease-out 6s;
+    height: 100%;
+    position: relative;
+}
+.notification h3 {
+    color: #fff;
+}
+
+.notification p {
+    color: #bcbcbc;
+}
+
+.fa-trophy {
+    font-size: 30px;
+    color: #ffee00;
+    background: #d7c909;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 3px 8px;
+    padding: 5px;
+}
+
+.close-btn {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+

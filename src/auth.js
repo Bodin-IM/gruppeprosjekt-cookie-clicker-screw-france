@@ -35,7 +35,7 @@ function login() {
                 localStorage.setItem("token", json.token);
                 console.log("Successfully stored user-token.");
 
-                window.location.href = "Changelater.html";
+                window.location.href = "index.html";
             })
             .catch((error) => {
                 console.error(error);

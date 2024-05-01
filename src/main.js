@@ -192,7 +192,6 @@ function save() {
 document.addEventListener("DOMContentLoaded", () => {
     // Oppdaterer visualizer først
     updateCashVisualizer();
-    check()
 
     /*
      * Hvert andre minutt skal cash lagres til database
