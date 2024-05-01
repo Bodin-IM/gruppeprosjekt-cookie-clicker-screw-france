@@ -81,6 +81,9 @@ function log(type, msg) {
         case "warning":
             console.warn(`[WARNING] -> ${msg}`);
             break;
+        default:
+            console.log(`[${type.toUpperCase()}] -> ${msg}`);
+            break;
     }
 }
 
