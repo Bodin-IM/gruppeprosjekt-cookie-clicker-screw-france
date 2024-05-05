@@ -15,7 +15,7 @@ import { check } from "./achievement.js";
 const cashVisualizer = document.getElementById("cash");
 const usernameVisualizer = document.getElementById("username");
 
-var totalCash = localStorage.getItem("cash");
+var totalCash = localStorage.getItem("cash") || 0;
 
 const BATCH_SIZE = 20;
 let clicks = 0;
