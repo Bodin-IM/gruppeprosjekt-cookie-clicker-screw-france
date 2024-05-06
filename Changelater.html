@@ -32,14 +32,14 @@
                     <button id="Upgrade_cp"><img src="Images/computr.jpg" alt="">Complete pc</button>
                     <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt="">Bird thing</button>
                     <button id="Upgrade_st"><img src="Images/satelite.jpg" alt="">Satelite</button>
-                    <button id="Upgrade_st"><img src="Images/Rover.jpg" alt="">Rover</button>
-                    <button id="Upgrade_st"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
-                    <button id="Upgrade_st"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
-                    <button id="Upgrade_st"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
-                    <button id="Upgrade_st"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
-                    <button id="Upgrade_st"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
-                    <button id="Upgrade_st"><img src="" alt="">V01D</button>
-                    <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt="">Jerald</button>
+                    <button id="Upgrade_rov"><img src="Images/Rover.jpg" alt="">Rover</button>
+                    <button id="Upgrade_ds"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
+                    <button id="Upgrade_bhg"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
+                    <button id="Upgrade_tm"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
+                    <button id="Upgrade_dg"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
+                    <button id="Upgrade_pu"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
+                    <button id="Upgrade_vd"><img src="" alt="">V01D</button>
+                    <button id="Upgrade_jerald"><img src="Images/Jerald.jpg" alt="">Jerald</button>
                 </div>
             </div>
             <!--le shope-->
@@ -53,6 +53,19 @@
                 var Upgrade6 = document.getElementById("Upgrade_ram")
                 var Upgrade7 = document.getElementById("Upgrade_cpu")
                 var Upgrade8 = document.getElementById("Upgrade_cc")
+                var Upgrade9 = document.getElementById("Upgrade_gc")
+                var Upgrade10 = document.getElementById("Upgrade_pcu")
+                var Upgrade11 = document.getElementById("Upgrade_cp")
+                var Upgrade12 = document.getElementById("Upgrade_bt")
+                var Upgrade13 = document.getElementById("Upgrade_st")
+                var Upgrade14 = document.getElementById("Upgrade_rov")
+                var Upgrade15 = document.getElementById("Upgrade_ds")
+                var Upgrade16 = document.getElementById("Upgrade_bhg")
+                var Upgrade17 = document.getElementById("Upgrade_tm")
+                var Upgrade18 = document.getElementById("Upgrade_dg")
+                var Upgrade19 = document.getElementById("Upgrade_pu")
+                var Upgrade20 = document.getElementById("Upgrade_vd")
+                var Upgrade21 = document.getElementById("Upgrade_jerald")
                 var cursorprice = 10
                 var motherprice = 550
                 var caseprice = 250
@@ -61,6 +74,19 @@
                 var autoclickprice = 25
                 var cpuprice = 4000
                 var coolerprice = 12500
+                var kardprice = 50000
+                var psuprice = 140000
+                var compprice = 210000
+                var birdprice = 350000
+                var sateliteprice = 500000
+                var roverprice = 1000000
+                var dysonprice = 4200000
+                var genprice = 58000000
+                var timeprice = 321000000
+                var dimentionprice = 3740000000
+                var parralellprice = 12000000000
+                var voidprice = 100000000000
+                var jeraldprice = 666666666666
                 var cursor = 0
                 var autoclicker = 0
                 var homeless = 0
@@ -69,6 +95,19 @@
                 var ram = 0
                 var cpu = 0
                 var cooler = 0
+                var kard = 0
+                var psu = 0
+                var comp = 0
+                var bird = 0
+                var satelite = 0
+                var rover = 0
+                var dyson = 0
+                var gen = 0
+                var time = 0
+                var dimention = 0
+                var parralell = 0
+                var V01D = 0
+                var jerald = 0
                 var dollar = 22222222222222222222222
                 
                 function cursor_buy() {
@@ -156,7 +195,7 @@
                     }
                 }
                 function cooler_buy() {
-                    if (dollar >= cpuprice) {
+                    if (dollar >= coolerprice) {
                         
                         dollar = dollar - coolerprice
                         coolerprice = coolerprice + Math.round(coolerprice/3)
@@ -164,6 +203,18 @@
                         console.log("New Price:", coolerprice)
                         cooler++
                         console.log("cooler count:", cooler)
+                        return;
+                    }
+                }
+                function Kard_buy() {
+                    if (dollar >= kardprice) {
+                        
+                        dollar = dollar - kardprice
+                        coolerprice = coolerprice + Math.round(kardprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", kardprice)
+                        kard++
+                        console.log("cooler count:", kard)
                         return;
                     }
                 }
@@ -187,6 +238,7 @@
                 Upgrade6.addEventListener("click", ram_buy);
                 Upgrade7.addEventListener("click", cpu_buy);
                 Upgrade8.addEventListener("click", cooler_buy);
+                Upgrade9.addEventListener("click", Kard_buy);
                 
                 </script>
         </body> <!--the code above is too messy (or not idk)-->
