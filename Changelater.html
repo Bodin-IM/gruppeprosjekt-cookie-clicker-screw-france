@@ -22,8 +22,8 @@
                     <button id="Upgrade"><img src="Images/Mous.jpg" alt=""><h6 id="cursor_price">10</h6>Cursor</button>
                     <button id="Upgrade_ac"><img src="Images/macro.jpg" alt=""><h6 id="auto_price">25</h6> click</button>
                     <button id="Upgrade_hg"><img src="Images/homeless.jpg" alt=""><h6 id="Homeless_guy">100</h6>Homeless guy</button>
-                    <button id="Upgrade_c"><img src="Images/1by1legobrick.jpg" alt=""><h6 id="Case"></h6>Case</button>
-                    <button id="Upgrade_mb"><img src="Images/motherboard.jpg" alt=""><h6 id="Motherboard">250</h6>Motherboard</button>
+                    <button id="Upgrade_c"><img src="Images/1by1legobrick.jpg" alt=""><h6 id="Case">250</h6>Case</button>
+                    <button id="Upgrade_mb"><img src="Images/motherboard.jpg" alt=""><h6 id="Motherboard">550</h6>Motherboard</button>
                     <button id="Upgrade_ram"><img src="Images/ham stick.jpg" alt=""><h6 id="RAM">1500</h6>RAM</button>
                     <button id="Upgrade_cpu"><img src="Images/cpu.jpg" alt=""><h6 id="Cpu">4000</h6>Cpu</button>
                     <button id="Upgrade_cc"><img src="Images/fan.jpg" alt=""><h6 id="Cpu_cooler">12500</h6>Cpu cooler</button>
@@ -167,6 +167,7 @@
                         
                         dollar = dollar - homelessprice
                         homelessprice = homelessprice + Math.round(homelessprice/3)
+                        EL_HG_price.innerHTML=homelessprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", homelessprice)
                         homeless++
@@ -179,6 +180,7 @@
                         
                         dollar = dollar - caseprice
                         caseprice = caseprice + Math.round(caseprice/3)
+                        EL_C_price.innerHTML=caseprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", caseprice)
                         Case++
@@ -191,6 +193,7 @@
                         
                         dollar = dollar - motherprice
                         motherprice = motherprice + Math.round(motherprice/3)
+                        EL_MB_price.innerHTML=motherprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", motherprice)
                         mother++
@@ -203,6 +206,7 @@
                         
                         dollar = dollar - ramprice
                         ramprice = ramprice + Math.round(ramprice/3)
+                        EL_RAM_price.innerHTML=ramprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", ramprice)
                         ram++
@@ -215,6 +219,7 @@
                         
                         dollar = dollar - cpuprice
                         cpuprice = cpuprice + Math.round(cpuprice/3)
+                        EL_CPU_price.innerHTML=cpuprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", cpuprice)
                         cpu++
@@ -227,6 +232,7 @@
                         
                         dollar = dollar - coolerprice
                         coolerprice = coolerprice + Math.round(coolerprice/3)
+                        EL_CPUC_price.innerHTML=coolerprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", coolerprice)
                         cooler++
@@ -239,6 +245,7 @@
                         
                         dollar = dollar - kardprice
                         coolerprice = coolerprice + Math.round(kardprice/3)
+                        EL_GC_price.innerHTML=caseprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", kardprice)
                         kard++
@@ -251,6 +258,7 @@
                         
                         dollar = dollar - psuprice
                         psuprice = psuprice + Math.round(psuprice/3)
+                        EL_PSU_price.innerHTML=psuprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", psuprice)
                         psu++
@@ -263,6 +271,7 @@
                         
                         dollar = dollar - compprice
                         compprice = compprice + Math.round(compprice/3)
+                        EL_CP_price.innerHTML=compprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", compprice)
                         comp++
@@ -275,6 +284,7 @@
                         
                         dollar = dollar - birdprice
                         birdprice = birdprice + Math.round(birdprice/3)
+                        EL_BT_price.innerHTML=birdprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", birdprice)
                         bird++
@@ -287,6 +297,7 @@
                         
                         dollar = dollar - sateliteprice
                         sateliteprice = sateliteprice + Math.round(sateliteprice/3)
+                        EL_S_price.innerHTML=sateliteprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", sateliteprice)
                         satelite++
@@ -299,6 +310,7 @@
                         
                         dollar = dollar - roverprice
                         roverprice = roverprice + Math.round(roverprice/3)
+                        EL_R_price.innerHTML=roverprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", roverprice)
                         rover++
@@ -311,6 +323,7 @@
                         
                         dollar = dollar - dysonprice
                         dysonprice = dysonprice + Math.round(dysonprice/3)
+                        EL_DS_price.innerHTML=dysonprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", dysonprice)
                         dyson++
@@ -323,6 +336,7 @@
                         
                         dollar = dollar - genprice
                         genprice = genprice + Math.round(genprice/3)
+                        EL_BHG_price.innerHTML=genprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", genprice)
                         gen++
@@ -335,6 +349,7 @@
                         
                         dollar = dollar - timeprice
                         timeprice = timeprice + Math.round(timeprice/3)
+                        EL_TM_price.innerHTML=timeprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", timeprice)
                         time++
@@ -347,6 +362,7 @@
                         
                         dollar = dollar - dimentionprice
                         dimentionprice = dimentionprice + Math.round(dimentionprice/3)
+                        EL_DG_price.innerHTML=dimentionprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", dimentionprice)
                         dimention++
@@ -359,6 +375,7 @@
                         
                         dollar = dollar - parralellprice
                         parralellprice = parralellprice + Math.round(parralellprice/3)
+                        EL_PG_price.innerHTML=parralellprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", parralellprice)
                         parralell++
@@ -371,6 +388,7 @@
                         
                         dollar = dollar - voidprice
                         voidprice = voidprice + Math.round(voidprice/3)
+                        EL_V_price.innerHTML=voidprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", voidprice)
                         V01D++
@@ -383,6 +401,7 @@
                         
                         dollar = dollar - jeraldprice
                         jeraldprice = jeraldprice + Math.round(jeraldprice/3)
+                        EL_J_price.innerHTML=jeraldprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", jeraldprice)
                         jerald++
