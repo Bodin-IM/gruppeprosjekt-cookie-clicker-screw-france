@@ -22,23 +22,23 @@
                     <button id="Upgrade"><img src="Images/Mous.jpg" alt=""><h6 id="cursor_price">10</h6>Cursor</button>
                     <button id="Upgrade_ac"><img src="Images/macro.jpg" alt=""><h6 id="auto_price">25</h6> click</button>
                     <button id="Upgrade_hg"><img src="Images/homeless.jpg" alt=""><h6 id="Homeless_guy">100</h6>Homeless guy</button>
-                    <button id="Upgrade_c"><img src="Images/1by1legobrick.jpg" alt="">Case</button>
-                    <button id="Upgrade_mb"><img src="Images/motherboard.jpg" alt="">Motherboard</button>
-                    <button id="Upgrade_ram"><img src="Images/ham stick.jpg" alt="">RAM</button>
-                    <button id="Upgrade_cpu"><img src="Images/cpu.jpg" alt="">Cpu</button>
-                    <button id="Upgrade_cc"><img src="Images/fan.jpg" alt="">Cpu cooler</button>
-                    <button id="Upgrade_gc"><img src="Images/grafik card.jpg" alt="">Graphics card</button>
-                    <button id="Upgrade_psu"><img src="Images/PSU.jpg" alt="">Psu</button>
-                    <button id="Upgrade_cp"><img src="Images/computr.jpg" alt="">Complete pc</button>
-                    <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt="">Bird thing</button>
-                    <button id="Upgrade_st"><img src="Images/satelite.jpg" alt="">Satelite</button>
-                    <button id="Upgrade_rov"><img src="Images/Rover.jpg" alt="">Rover</button>
-                    <button id="Upgrade_ds"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
-                    <button id="Upgrade_bhg"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
-                    <button id="Upgrade_tm"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
-                    <button id="Upgrade_dg"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
-                    <button id="Upgrade_pu"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
-                    <button id="Upgrade_vd"><img src="" alt="">V01D</button>
+                    <button id="Upgrade_c"><img src="Images/1by1legobrick.jpg" alt=""><h6 id="Case"></h6>Case</button>
+                    <button id="Upgrade_mb"><img src="Images/motherboard.jpg" alt=""><h6 id="Motherboard">250</h6>Motherboard</button>
+                    <button id="Upgrade_ram"><img src="Images/ham stick.jpg" alt=""><h6 id="RAM">1500</h6>RAM</button>
+                    <button id="Upgrade_cpu"><img src="Images/cpu.jpg" alt=""><h6 id="Cpu">4000</h6>Cpu</button>
+                    <button id="Upgrade_cc"><img src="Images/fan.jpg" alt=""><h6 id="Cpu_cooler">12500</h6>Cpu cooler</button>
+                    <button id="Upgrade_gc"><img src="Images/grafik card.jpg" alt=""><h6 id="Graphics_card">50000</h6>Graphics card</button>
+                    <button id="Upgrade_psu"><img src="Images/PSU.jpg" alt=""><h6 id="Psu">140000</h6>Psu</button>
+                    <button id="Upgrade_cp"><img src="Images/computr.jpg" alt=""><h6 id="Complete_pc">210000</h6>Complete pc</button>
+                    <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt=""><h6 id="Bird_thing">350000</h6>Bird thing</button>
+                    <button id="Upgrade_st"><img src="Images/satelite.jpg" alt=""><h6 id="Satelite">500000</h6>Satelite</button>
+                    <button id="Upgrade_rov"><img src="Images/Rover.jpg" alt=""><h6 id="Rover">1000000</h6>Rover</button>
+                    <button id="Upgrade_ds"><img src="Images/Dyson Spheres.jpg" alt=""><h6 id="Dyson_sphere">4200000</h6>Dyson Sphere</button>
+                    <button id="Upgrade_bhg"><img src="Images/Black Hole.jpg" alt=""><h6 id="Black_Hole_Generator">58000000</h6>Black Hole Generator</button>
+                    <button id="Upgrade_tm"><img src="Images/Time Machine.jpg" alt=""><h6 id="time_machine">321000000</h6>Time Machine</button>
+                    <button id="Upgrade_dg"><img src="Images/Dimentional Gate.png" alt=""><h6 id="Dimentional_gate">3740000000</h6>Dimentional Gate</button>
+                    <button id="Upgrade_pu"><img src="Images/Parralell universes.jpg" alt=""><h6 id="Parralell_universes">12000000000</h6>Parralell universes</button>
+                    <button id="Upgrade_vd"><img src="" alt=""><h6 id="V01D">100000000000</h6>V01D</button>
                     <button id="Upgrade_jerald"><img src="Images/Jerald.jpg" alt=""><h6 id="Jerald">666666666666</h6>Jerald</button>
                 </div>
             </div>
@@ -70,6 +70,25 @@
                 var EL_priceCursor = document.getElementById("cursor_price")
                 var EL_priceAuto = document.getElementById("auto_price")
                 var EL_HG_price = document.getElementById("Homeless_guy")
+                var EL_C_price = document.getElementById("Case")
+                var EL_MB_price = document.getElementById("Motherboard")
+                var EL_RAM_price = document.getElementById("RAM")
+                var EL_CPU_price = document.getElementById("Cpu")
+                var EL_CPUC_price = document.getElementById("Cpu_cooler")
+                var EL_GC_price = document.getElementById("Graphics_card")
+                var EL_PSU_price = document.getElementById("Psu")
+                var EL_CP_price = document.getElementById("Complete_pc")
+                var EL_BT_price = document.getElementById("Bird_thing")
+                var EL_S_price = document.getElementById("Satelite")
+                var EL_R_price = document.getElementById("Rover")
+                var EL_DS_price = document.getElementById("Dyson_sphere")
+                var EL_BHG_price = document.getElementById("Black_Hole_Generator")
+                var EL_TM_price = document.getElementById("time_machine")
+                var EL_DG_price = document.getElementById("Dimentional_gate")
+                var EL_PG_price = document.getElementById("Parralell_universes")
+                var EL_V_price = document.getElementById("V01D")
+                var EL_J_price = document.getElementById("Jerald")
+             
                 
                 var cursorprice = 10
                 var motherprice = 550
@@ -92,6 +111,7 @@
                 var parralellprice = 12000000000
                 var voidprice = 100000000000
                 var jeraldprice = 666666666666
+                
                 var cursor = 0
                 var autoclicker = 0
                 var homeless = 0
