@@ -83,10 +83,10 @@
                 var dysonprice = 4200000
                 var genprice = 58000000
                 var timeprice = 321000000
-                var dimentionprice = 3740000000
-                var parralellprice = 12000000000
-                var voidprice = 100000000000
-                var jeraldprice = 666666666666
+                var dimentionprice = 374000000
+                var parralellprice = 1200000000
+                var voidprice = 10000000000
+                var jeraldprice = 66666666666
                 var cursor = 0
                 var autoclicker = 0
                 var homeless = 0
@@ -109,6 +109,7 @@
                 var V01D = 0
                 var jerald = 0
                 var dollar = 666666666666666
+                var cps = 0
                 
                 function cursor_buy() {
                     if (dollar >= cursorprice) {
@@ -119,6 +120,7 @@
                         console.log("New Price:", cursorprice)
                         cursor++
                         console.log("Cursor count", cursor)
+                        cpscalc()
                         return;
                     }
                 }
@@ -131,6 +133,7 @@
                         console.log("New Price:", autoclickprice)
                         autoclicker++
                         console.log("autoclicker count:", autoclicker)
+                        cpscalc()
                         return;
                     }
                 }
@@ -143,6 +146,7 @@
                         console.log("New Price:", homelessprice)
                         homeless++
                         console.log("Homeless count:", homeless)
+                        cpscalc()
                         return;
                     }
                 }
@@ -155,6 +159,7 @@
                         console.log("New Price:", caseprice)
                         Case++
                         console.log("case count:", Case)
+                        cpscalc()
                         return;
                     }
                 }
@@ -167,6 +172,7 @@
                         console.log("New Price:", motherprice)
                         mother++
                         console.log("Motherboard count:", mother)
+                        cpscalc()
                         return;
                     }
                 }
@@ -179,6 +185,7 @@
                         console.log("New Price:", ramprice)
                         ram++
                         console.log("ram count:", ram)
+                        cpscalc()
                         return;
                     }
                 }
@@ -191,6 +198,7 @@
                         console.log("New Price:", cpuprice)
                         cpu++
                         console.log("cpu count:", cpu)
+                        cpscalc()
                         return;
                     }
                 }
@@ -203,6 +211,7 @@
                         console.log("New Price:", coolerprice)
                         cooler++
                         console.log("cooler count:", cooler)
+                        cpscalc()
                         return;
                     }
                 }
@@ -215,6 +224,7 @@
                         console.log("New Price:", kardprice)
                         kard++
                         console.log("kard count:", kard)
+                        cpscalc()
                         return;
                     }
                 }
@@ -227,6 +237,7 @@
                         console.log("New Price:", psuprice)
                         psu++
                         console.log("psu count:", psu)
+                        cpscalc()
                         return;
                     }
                 }
@@ -239,6 +250,7 @@
                         console.log("New Price:", compprice)
                         comp++
                         console.log("complete setup count:", comp)
+                        cpscalc()
                         return;
                     }
                 }
@@ -251,6 +263,7 @@
                         console.log("New Price:", birdprice)
                         bird++
                         console.log("bird count:", bird)
+                        cpscalc()
                         return;
                     }
                 }
@@ -263,6 +276,7 @@
                         console.log("New Price:", sateliteprice)
                         satelite++
                         console.log("satelite count:", satelite)
+                        cpscalc()
                         return;
                     }
                 }
@@ -275,6 +289,7 @@
                         console.log("New Price:", roverprice)
                         rover++
                         console.log("rover count:", rover)
+                        cpscalc()
                         return;
                     }
                 }
@@ -287,6 +302,7 @@
                         console.log("New Price:", dysonprice)
                         dyson++
                         console.log("dyson count:", dyson)
+                        cpscalc()
                         return;
                     }
                 }
@@ -299,6 +315,7 @@
                         console.log("New Price:", genprice)
                         gen++
                         console.log("blackhle generator count:", gen)
+                        cpscalc()
                         return;
                     }
                 }
@@ -311,6 +328,7 @@
                         console.log("New Price:", timeprice)
                         time++
                         console.log("time machine count:", time)
+                        cpscalc()
                         return;
                     }
                 }
@@ -323,6 +341,7 @@
                         console.log("New Price:", dimentionprice)
                         dimention++
                         console.log("dimentional gate count:", dimention)
+                        cpscalc()
                         return;
                     }
                 }
@@ -335,6 +354,7 @@
                         console.log("New Price:", parralellprice)
                         parralell++
                         console.log("parralell universe count:", parralell)
+                        cpscalc()
                         return;
                     }
                 }
@@ -347,6 +367,7 @@
                         console.log("New Price:", voidprice)
                         V01D++
                         console.log("V01D Count:", V01D)
+                        cpscalc()
                         return;
                     }
                 }
@@ -359,11 +380,37 @@
                         console.log("New Price:", jeraldprice)
                         jerald++
                         console.log("jerald count:", jerald)
-                        location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                        cpscalc()
                         return;
                     }
                 }
                 
+                function cpscalc() {
+                    cps = 0
+                    cps += Math.round(cursor*1)
+                    cps = cps + Math.round(autoclicker*5)
+                    cps = cps + Math.round(homeless*15)
+                    cps = cps + Math.round(Case*25)
+                    cps = cps + Math.round(mother*50)
+                    cps = cps + Math.round(ram*100)
+                    cps = cps + Math.round(cpu*270)
+                    cps = cps + Math.round(cooler*790)
+                    cps = cps + Math.round(kard*1900)
+                    cps = cps + Math.round(psu*5800)
+                    cps = cps + Math.round(comp*22500)
+                    cps = cps + Math.round(bird*42069)
+                    cps = cps + Math.round(satelite*69420)
+                    cps = cps + Math.round(rover*91820)
+                    cps = cps + Math.round(dyson*173000)
+                    cps = cps + Math.round(gen*420420)
+                    cps += Math.round(time*1000000)
+                    cps += Math.round(dimention*7050201)
+                    cps += Math.round(parralell*24782029)
+                    cps += Math.round(V01D*69696969)
+                    cps += Math.round(jerald*666666666)
+                    console.log("Cash per second:", cps)
+                }
+
                 Upgrade2.addEventListener("click", autoclick_buy);
                 Upgrade1.addEventListener("click", cursor_buy);
                 Upgrade3.addEventListener("click", homeless_buy);
@@ -385,6 +432,7 @@
                 Upgrade19.addEventListener("click", parralell_buy);
                 Upgrade20.addEventListener("click", V01D_buy);
                 Upgrade21.addEventListener("click", jerald_buy);
+
                 
 
                 
