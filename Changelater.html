@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script type="module" src="src/main.js"></script>
+    
 </head>
 <body>
     <button id="save" style="width: 250px; height: 50px;">Save</button>
@@ -31,38 +32,94 @@
                     <button id="Upgrade_cp"><img src="Images/computr.jpg" alt="">Complete pc</button>
                     <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt="">Bird thing</button>
                     <button id="Upgrade_st"><img src="Images/satelite.jpg" alt="">Satelite</button>
-                    <button id="Upgrade_st"><img src="Images/Rover.jpg" alt="">Rover</button>
-                    <button id="Upgrade_st"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
-                    <button id="Upgrade_st"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
-                    <button id="Upgrade_st"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
-                    <button id="Upgrade_st"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
-                    <button id="Upgrade_st"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
-                    <button id="Upgrade_st"><img src="" alt="">V01D</button>
-                    <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt=""><h6 id="Jerald">666666666666</h6>Jerald</button>
+                    <button id="Upgrade_rov"><img src="Images/Rover.jpg" alt="">Rover</button>
+                    <button id="Upgrade_ds"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
+                    <button id="Upgrade_bhg"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
+                    <button id="Upgrade_tm"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
+                    <button id="Upgrade_dg"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
+                    <button id="Upgrade_pu"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
+                    <button id="Upgrade_vd"><img src="" alt="">V01D</button>
+                    <button id="Upgrade_jerald"><img src="Images/Jerald.jpg" alt=""><h6 id="Jerald">666666666666</h6>Jerald</button>
                 </div>
             </div>
-            <!-- replace cash system later-->
+            <!--le shope-->
             <script src="src/main.js" type="module"></script>
             <script>
                 var Upgrade1 = document.getElementById("Upgrade")
                 var Upgrade2 = document.getElementById("Upgrade_ac")
                 var Upgrade3 = document.getElementById("Upgrade_hg")
                 var Upgrade4 = document.getElementById("Upgrade_c")
-
+                var Upgrade5 = document.getElementById("Upgrade_mb")
+                var Upgrade6 = document.getElementById("Upgrade_ram")
+                var Upgrade7 = document.getElementById("Upgrade_cpu")
+                var Upgrade8 = document.getElementById("Upgrade_cc")
+                var Upgrade9 = document.getElementById("Upgrade_gc")
+                var Upgrade10 = document.getElementById("Upgrade_pcu")
+                var Upgrade11 = document.getElementById("Upgrade_cp")
+                var Upgrade12 = document.getElementById("Upgrade_bt")
+                var Upgrade13 = document.getElementById("Upgrade_st")
+                var Upgrade14 = document.getElementById("Upgrade_rov")
+                var Upgrade15 = document.getElementById("Upgrade_ds")
+                var Upgrade16 = document.getElementById("Upgrade_bhg")
+                var Upgrade17 = document.getElementById("Upgrade_tm")
+                var Upgrade18 = document.getElementById("Upgrade_dg")
+                var Upgrade19 = document.getElementById("Upgrade_pu")
+                var Upgrade20 = document.getElementById("Upgrade_vd")
+                var Upgrade21 = document.getElementById("Upgrade_jerald")
+                
                 var EL_priceCursor = document.getElementById("cursor_price")
                 var EL_priceAuto = document.getElementById("auto_price")
                 var EL_HG_price = document.getElementById("Homeless_guy")
+                
                 var cursorprice = 10
+                var motherprice = 550
+                var caseprice = 250
+                var ramprice = 1500
+                var homelessprice = 100
                 var autoclickprice = 25
+                var cpuprice = 4000
+                var coolerprice = 12500
+                var kardprice = 50000
+                var psuprice = 140000
+                var compprice = 210000
+                var birdprice = 350000
+                var sateliteprice = 500000
+                var roverprice = 1000000
+                var dysonprice = 4200000
+                var genprice = 58000000
+                var timeprice = 321000000
+                var dimentionprice = 3740000000
+                var parralellprice = 12000000000
+                var voidprice = 100000000000
+                var jeraldprice = 666666666666
                 var cursor = 0
                 var autoclicker = 0
-                var dollar = 222222
+                var homeless = 0
+                var Case = 0
+                var mother = 0
+                var ram = 0
+                var cpu = 0
+                var cooler = 0
+                var kard = 0
+                var psu = 0
+                var comp = 0
+                var bird = 0
+                var satelite = 0
+                var rover = 0
+                var dyson = 0
+                var gen = 0
+                var time = 0
+                var dimention = 0
+                var parralell = 0
+                var V01D = 0
+                var jerald = 0
+                var dollar = 22222222222222222222222
                 
                 function cursor_buy() {
                     if (dollar >= cursorprice) {
                         
                         dollar -= cursorprice
-                        cursorprice = cursorprice + Math.round(cursorprice/2)
+                        cursorprice = cursorprice + Math.round(cursorprice/3)
                         EL_priceCursor.innerHTML=cursorprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", cursorprice)
@@ -75,7 +132,7 @@
                     if (dollar >= autoclickprice) {
                         
                         dollar -= cursorprice
-                        autoclickprice = autoclickprice + Math.round(autoclickprice/2)
+                        autoclickprice = autoclickprice + Math.round(autoclickprice/3)
                         EL_priceAuto.innerHTML=autoclickprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", autoclickprice)
@@ -84,10 +141,94 @@
                         return;
                     }
                 }
+                function homeless_buy() {
+                    if (dollar >= homelessprice) {
+                        
+                        dollar = dollar - homelessprice
+                        homelessprice = homelessprice + Math.round(homelessprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", homelessprice)
+                        homeless++
+                        console.log("Homeless count:", homeless)
+                        return;
+                    }
+                }
+                function case_buy() {
+                    if (dollar >= caseprice) {
+                        
+                        dollar = dollar - caseprice
+                        caseprice = caseprice + Math.round(caseprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", caseprice)
+                        Case++
+                        console.log("case count:", Case)
+                        return;
+                    }
+                }
+                function mother_buy() {
+                    if (dollar >= motherprice) {
+                        
+                        dollar = dollar - motherprice
+                        motherprice = motherprice + Math.round(motherprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", motherprice)
+                        mother++
+                        console.log("Motherboard count:", mother)
+                        return;
+                    }
+                }
+                function ram_buy() {
+                    if (dollar >= ramprice) {
+                        
+                        dollar = dollar - ramprice
+                        ramprice = ramprice + Math.round(ramprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", ramprice)
+                        ram++
+                        console.log("ram count:", ram)
+                        return;
+                    }
+                }
+                function cpu_buy() {
+                    if (dollar >= cpuprice) {
+                        
+                        dollar = dollar - cpuprice
+                        cpuprice = cpuprice + Math.round(cpuprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", cpuprice)
+                        cpu++
+                        console.log("cpu count:", cpu)
+                        return;
+                    }
+                }
+                function cooler_buy() {
+                    if (dollar >= coolerprice) {
+                        
+                        dollar = dollar - coolerprice
+                        coolerprice = coolerprice + Math.round(coolerprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", coolerprice)
+                        cooler++
+                        console.log("cooler count:", cooler)
+                        return;
+                    }
+                }
+                function Kard_buy() {
+                    if (dollar >= kardprice) {
+                        
+                        dollar = dollar - kardprice
+                        coolerprice = coolerprice + Math.round(kardprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", kardprice)
+                        kard++
+                        console.log("cooler count:", kard)
+                        return;
+                    }
+                }
                 function jerald_buy() {
                     if (dollar >= cursorprice) {
                         
-                        dollar -= cursorprice
+                        dollar = dollar - cursorprice
                         cursorprice = cursorprice + (cursorprice/2)
                         console.log(dollar)
                         console.log(cursorprice)
@@ -100,7 +241,12 @@
                 Upgrade1.addEventListener("click", cursor_buy);
                 Upgrade3.addEventListener("click", homeless_buy);
                 Upgrade4.addEventListener("click", case_buy);
-                Upgrade21.addEventListener("click", jerald_buy)
+                Upgrade5.addEventListener("click", mother_buy);
+                Upgrade6.addEventListener("click", ram_buy);
+                Upgrade7.addEventListener("click", cpu_buy);
+                Upgrade8.addEventListener("click", cooler_buy);
+                Upgrade9.addEventListener("click", Kard_buy);
+                
                 </script>
         </body> <!--the code above is too messy (or not idk)-->
         </html>

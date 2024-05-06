@@ -3,7 +3,7 @@ import { log, getCash, manageCash } from "./main.js";
 
 // Dictionary som inneholder alle butikk-items
 const sItems = {
-    "Mouse": 10,
+    "Cursor": 10,
     "Auto click": 25,
     "Homeless guy": 100,
     "Case": 250,
