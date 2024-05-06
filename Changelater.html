@@ -18,9 +18,9 @@
         <div class = "Upgrade_buttons">
             <div class="">
                 <div class="button_container">
-                    <button id="Upgrade"><img src="Images/Mous.jpg" alt="">Cursor</button>
-                    <button id="Upgrade_ac"><img src="Images/macro.jpg" alt="">Auto click</button>
-                    <button id="Upgrade_hg"><img src="Images/homeless.jpg" alt="">Homeless guy</button>
+                    <button id="Upgrade"><img src="Images/Mous.jpg" alt=""><h6 id="cursor_price">10</h6>Cursor</button>
+                    <button id="Upgrade_ac"><img src="Images/macro.jpg" alt=""><h6 id="auto_price">25</h6> click</button>
+                    <button id="Upgrade_hg"><img src="Images/homeless.jpg" alt=""><h6 id="Homeless_guy">100</h6>Homeless guy</button>
                     <button id="Upgrade_c"><img src="Images/1by1legobrick.jpg" alt="">Case</button>
                     <button id="Upgrade_mb"><img src="Images/motherboard.jpg" alt="">Motherboard</button>
                     <button id="Upgrade_ram"><img src="Images/ham stick.jpg" alt="">RAM</button>
@@ -38,7 +38,7 @@
                     <button id="Upgrade_st"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
                     <button id="Upgrade_st"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
                     <button id="Upgrade_st"><img src="" alt="">V01D</button>
-                    <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt="">Jerald</button>
+                    <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt=""><h6 id="Jerald">666666666666</h6>Jerald</button>
                 </div>
             </div>
             <!-- replace cash system later-->
@@ -48,6 +48,10 @@
                 var Upgrade2 = document.getElementById("Upgrade_ac")
                 var Upgrade3 = document.getElementById("Upgrade_hg")
                 var Upgrade4 = document.getElementById("Upgrade_c")
+
+                var EL_priceCursor = document.getElementById("cursor_price")
+                var EL_priceAuto = document.getElementById("auto_price")
+                var EL_HG_price = document.getElementById("Homeless_guy")
                 var cursorprice = 10
                 var autoclickprice = 25
                 var cursor = 0
@@ -59,6 +63,7 @@
                         
                         dollar -= cursorprice
                         cursorprice = cursorprice + Math.round(cursorprice/2)
+                        EL_priceCursor.innerHTML=cursorprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", cursorprice)
                         cursor++
@@ -71,6 +76,7 @@
                         
                         dollar -= cursorprice
                         autoclickprice = autoclickprice + Math.round(autoclickprice/2)
+                        EL_priceAuto.innerHTML=autoclickprice
                         console.log("Remaining cash;", dollar)
                         console.log("New Price:", autoclickprice)
                         autoclicker++
