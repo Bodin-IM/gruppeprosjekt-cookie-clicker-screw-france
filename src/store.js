@@ -20,10 +20,10 @@ const sItems = {
     "Dyson Sphere": 4200000,
     "Black Hole Generator": 58000000,
     "Time Machine": 321000000,
-    "Dimentional Gate": 3740000000,
-    "Parallel Universes": 12000000000,
-    "V01D": 100000000000,
-    "Jerald": 666666666666,
+    "Dimentional Gate": 374000000,
+    "Parallel Universes": 1200000000,
+    "V01D": 10000000000,
+    "Jerald": 66666666666,
 
 
 };

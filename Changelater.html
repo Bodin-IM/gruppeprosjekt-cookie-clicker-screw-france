@@ -32,14 +32,14 @@
                     <button id="Upgrade_cp"><img src="Images/computr.jpg" alt="">Complete pc</button>
                     <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt="">Bird thing</button>
                     <button id="Upgrade_st"><img src="Images/satelite.jpg" alt="">Satelite</button>
-                    <button id="Upgrade_st"><img src="Images/Rover.jpg" alt="">Rover</button>
-                    <button id="Upgrade_st"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
-                    <button id="Upgrade_st"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
-                    <button id="Upgrade_st"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
-                    <button id="Upgrade_st"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
-                    <button id="Upgrade_st"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
-                    <button id="Upgrade_st"><img src="" alt="">V01D</button>
-                    <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt="">Jerald</button>
+                    <button id="Upgrade_rov"><img src="Images/Rover.jpg" alt="">Rover</button>
+                    <button id="Upgrade_ds"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere</button>
+                    <button id="Upgrade_bhg"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator</button>
+                    <button id="Upgrade_tm"><img src="Images/Time Machine.jpg" alt="">Time Machine</button>
+                    <button id="Upgrade_dg"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate</button>
+                    <button id="Upgrade_pu"><img src="Images/Parralell universes.jpg" alt="">Parralell universes</button>
+                    <button id="Upgrade_vd"><img src="" alt="">V01D</button>
+                    <button id="Upgrade_jr"><img src="Images/Jerald.jpg" alt="">Jerald</button>
                 </div>
             </div>
             <!--le shope-->
@@ -53,6 +53,19 @@
                 var Upgrade6 = document.getElementById("Upgrade_ram")
                 var Upgrade7 = document.getElementById("Upgrade_cpu")
                 var Upgrade8 = document.getElementById("Upgrade_cc")
+                var Upgrade9 = document.getElementById("Upgrade_gc")
+                var Upgrade10 = document.getElementById("Upgrade_psu")
+                var Upgrade11 = document.getElementById("Upgrade_cp")
+                var Upgrade12 = document.getElementById("Upgrade_bt")
+                var Upgrade13 = document.getElementById("Upgrade_st")
+                var Upgrade14 = document.getElementById("Upgrade_rov")
+                var Upgrade15 = document.getElementById("Upgrade_ds")
+                var Upgrade16 = document.getElementById("Upgrade_bhg")
+                var Upgrade17 = document.getElementById("Upgrade_tm")
+                var Upgrade18 = document.getElementById("Upgrade_dg")
+                var Upgrade19 = document.getElementById("Upgrade_pu")
+                var Upgrade20 = document.getElementById("Upgrade_vd")
+                var Upgrade21 = document.getElementById("Upgrade_jr")
                 var cursorprice = 10
                 var motherprice = 550
                 var caseprice = 250
@@ -61,6 +74,19 @@
                 var autoclickprice = 25
                 var cpuprice = 4000
                 var coolerprice = 12500
+                var kardprice = 50000
+                var psuprice = 140000
+                var compprice = 210000
+                var birdprice = 350000
+                var sateliteprice = 500000
+                var roverprice = 1000000
+                var dysonprice = 4200000
+                var genprice = 58000000
+                var timeprice = 321000000
+                var dimentionprice = 374000000
+                var parralellprice = 1200000000
+                var voidprice = 10000000000
+                var jeraldprice = 66666666666
                 var cursor = 0
                 var autoclicker = 0
                 var homeless = 0
@@ -69,7 +95,21 @@
                 var ram = 0
                 var cpu = 0
                 var cooler = 0
-                var dollar = 22222222222222222222222
+                var kard = 0
+                var psu = 0
+                var comp = 0
+                var bird = 0
+                var satelite = 0
+                var rover = 0
+                var dyson = 0
+                var gen = 0
+                var time = 0
+                var dimention = 0
+                var parralell = 0
+                var V01D = 0
+                var jerald = 0
+                var dollar = 666666666666666
+                var cps = 0
                 
                 function cursor_buy() {
                     if (dollar >= cursorprice) {
@@ -80,6 +120,7 @@
                         console.log("New Price:", cursorprice)
                         cursor++
                         console.log("Cursor count", cursor)
+                        cpscalc()
                         return;
                     }
                 }
@@ -92,6 +133,7 @@
                         console.log("New Price:", autoclickprice)
                         autoclicker++
                         console.log("autoclicker count:", autoclicker)
+                        cpscalc()
                         return;
                     }
                 }
@@ -104,6 +146,7 @@
                         console.log("New Price:", homelessprice)
                         homeless++
                         console.log("Homeless count:", homeless)
+                        cpscalc()
                         return;
                     }
                 }
@@ -116,6 +159,7 @@
                         console.log("New Price:", caseprice)
                         Case++
                         console.log("case count:", Case)
+                        cpscalc()
                         return;
                     }
                 }
@@ -128,6 +172,7 @@
                         console.log("New Price:", motherprice)
                         mother++
                         console.log("Motherboard count:", mother)
+                        cpscalc()
                         return;
                     }
                 }
@@ -140,6 +185,7 @@
                         console.log("New Price:", ramprice)
                         ram++
                         console.log("ram count:", ram)
+                        cpscalc()
                         return;
                     }
                 }
@@ -152,11 +198,12 @@
                         console.log("New Price:", cpuprice)
                         cpu++
                         console.log("cpu count:", cpu)
+                        cpscalc()
                         return;
                     }
                 }
                 function cooler_buy() {
-                    if (dollar >= cpuprice) {
+                    if (dollar >= coolerprice) {
                         
                         dollar = dollar - coolerprice
                         coolerprice = coolerprice + Math.round(coolerprice/3)
@@ -164,21 +211,206 @@
                         console.log("New Price:", coolerprice)
                         cooler++
                         console.log("cooler count:", cooler)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function Kard_buy() {
+                    if (dollar >= kardprice) {
+                        
+                        dollar = dollar - kardprice
+                        coolerprice = coolerprice + Math.round(kardprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", kardprice)
+                        kard++
+                        console.log("kard count:", kard)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function psu_buy() {
+                    if (dollar >= psuprice) {
+                        
+                        dollar = dollar - psuprice
+                        psuprice = psuprice + Math.round(psuprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", psuprice)
+                        psu++
+                        console.log("psu count:", psu)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function comp_buy() {
+                    if (dollar >= compprice) {
+                        
+                        dollar = dollar - compprice
+                        compprice = compprice + Math.round(compprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", compprice)
+                        comp++
+                        console.log("complete setup count:", comp)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function bird_buy() {
+                    if (dollar >= birdprice) {
+                        
+                        dollar = dollar - birdprice
+                        birdprice = birdprice + Math.round(birdprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", birdprice)
+                        bird++
+                        console.log("bird count:", bird)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function satelite_buy() {
+                    if (dollar >= sateliteprice) {
+                        
+                        dollar = dollar - sateliteprice
+                        sateliteprice = sateliteprice + Math.round(sateliteprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", sateliteprice)
+                        satelite++
+                        console.log("satelite count:", satelite)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function rover_buy() {
+                    if (dollar >= roverprice) {
+                        
+                        dollar = dollar - roverprice
+                        roverprice = roverprice + Math.round(roverprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", roverprice)
+                        rover++
+                        console.log("rover count:", rover)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function dyson_buy() {
+                    if (dollar >= dysonprice) {
+                        
+                        dollar = dollar - dysonprice
+                        dysonprice = dysonprice + Math.round(dysonprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", dysonprice)
+                        dyson++
+                        console.log("dyson count:", dyson)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function gen_buy() {
+                    if (dollar >= genprice) {
+                        
+                        dollar = dollar - genprice
+                        genprice = genprice + Math.round(genprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", genprice)
+                        gen++
+                        console.log("blackhle generator count:", gen)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function time_buy() {
+                    if (dollar >= timeprice) {
+                        
+                        dollar = dollar - timeprice
+                        timeprice = timeprice + Math.round(timeprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", timeprice)
+                        time++
+                        console.log("time machine count:", time)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function dimention_buy() {
+                    if (dollar >= dimentionprice) {
+                        
+                        dollar = dollar - dimentionprice
+                        dimentionprice = dimentionprice + Math.round(dimentionprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", dimentionprice)
+                        dimention++
+                        console.log("dimentional gate count:", dimention)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function parralell_buy() {
+                    if (dollar >= parralellprice) {
+                        
+                        dollar = dollar - parralellprice
+                        parralellprice = parralellprice + Math.round(parralellprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", parralellprice)
+                        parralell++
+                        console.log("parralell universe count:", parralell)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function V01D_buy() {
+                    if (dollar >= voidprice) {
+                        
+                        dollar = dollar - voidprice
+                        voidprice = voidprice + Math.round(voidprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", voidprice)
+                        V01D++
+                        console.log("V01D Count:", V01D)
+                        cpscalc()
                         return;
                     }
                 }
                 function jerald_buy() {
-                    if (dollar >= cursorprice) {
+                    if (dollar >= jeraldprice) {
                         
-                        dollar = dollar - cursorprice
-                        cursorprice = cursorprice + (cursorprice/2)
-                        console.log(dollar)
-                        console.log(cursorprice)
-                        location.href = "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi41M_pstiFAxW8GRAIHVl5CFUQwqsBegQIChAF&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdQw4w9WgXcQ&usg=AOvVaw0aHtehaphMhOCAkCydRLZU&opi=89978449";
+                        dollar = dollar - jeraldprice
+                        jeraldprice = jeraldprice + Math.round(jeraldprice/3)
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", jeraldprice)
+                        jerald++
+                        console.log("jerald count:", jerald)
+                        cpscalc()
                         return;
                     }
                 }
                 
+                function cpscalc() {
+                    cps = 0
+                    cps += Math.round(cursor*1)
+                    cps = cps + Math.round(autoclicker*5)
+                    cps = cps + Math.round(homeless*15)
+                    cps = cps + Math.round(Case*25)
+                    cps = cps + Math.round(mother*50)
+                    cps = cps + Math.round(ram*100)
+                    cps = cps + Math.round(cpu*270)
+                    cps = cps + Math.round(cooler*790)
+                    cps = cps + Math.round(kard*1900)
+                    cps = cps + Math.round(psu*5800)
+                    cps = cps + Math.round(comp*22500)
+                    cps = cps + Math.round(bird*42069)
+                    cps = cps + Math.round(satelite*69420)
+                    cps = cps + Math.round(rover*91820)
+                    cps = cps + Math.round(dyson*173000)
+                    cps = cps + Math.round(gen*420420)
+                    cps += Math.round(time*1000000)
+                    cps += Math.round(dimention*7050201)
+                    cps += Math.round(parralell*24782029)
+                    cps += Math.round(V01D*69696969)
+                    cps += Math.round(jerald*666666666)
+                    console.log("Cash per second:", cps)
+                }
+
                 Upgrade2.addEventListener("click", autoclick_buy);
                 Upgrade1.addEventListener("click", cursor_buy);
                 Upgrade3.addEventListener("click", homeless_buy);
@@ -187,6 +419,22 @@
                 Upgrade6.addEventListener("click", ram_buy);
                 Upgrade7.addEventListener("click", cpu_buy);
                 Upgrade8.addEventListener("click", cooler_buy);
+                Upgrade9.addEventListener("click", Kard_buy);
+                Upgrade10.addEventListener("click", psu_buy);
+                Upgrade11.addEventListener("click", comp_buy);
+                Upgrade12.addEventListener("click", bird_buy);
+                Upgrade13.addEventListener("click", satelite_buy)
+                Upgrade14.addEventListener("click", rover_buy);
+                Upgrade15.addEventListener("click", dyson_buy);
+                Upgrade16.addEventListener("click", gen_buy);
+                Upgrade17.addEventListener("click", time_buy);
+                Upgrade18.addEventListener("click", dimention_buy);
+                Upgrade19.addEventListener("click", parralell_buy);
+                Upgrade20.addEventListener("click", V01D_buy);
+                Upgrade21.addEventListener("click", jerald_buy);
+
+                
+
                 
                 </script>
         </body> <!--the code above is too messy (or not idk)-->
