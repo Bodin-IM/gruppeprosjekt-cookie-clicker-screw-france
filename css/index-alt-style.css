@@ -1,0 +1,17 @@
+body {
+    display: grid; grid-template-columns: 25% 1fr 25%;
+    height: 100vh;
+    margin: 0; 
+}
+
+.left-sidebar {
+    background-color: #1c1f23;
+}
+
+.right-sidebar {
+    background-color: #1c1f23;
+}
+
+.main {
+    background-color: #c3c5ca;
+}

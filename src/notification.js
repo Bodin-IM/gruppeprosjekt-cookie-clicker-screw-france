@@ -33,7 +33,7 @@ function createAchievementNotification(title, goal, message) {
     <span><i class="fa-solid fa-trophy"></i></span>
     <div id="message">
         <h3 class="title"><strong>${title}</strong> achievement unlocked!</h3>
-        <p class="msg">${message} (${goal} clicks)</p>
+        <p class="msg">${message}</p>
     </div>
     <div class="close-btn" id="closeBtn">
         <span><i class="fa-solid fa-xmark"></i></span>
