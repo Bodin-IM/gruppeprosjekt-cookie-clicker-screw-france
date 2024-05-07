@@ -182,6 +182,8 @@ function fetchUserDetails() {
 
 /* En funksjon som kan brukes for å kjapt lagre hvor mye cash brukeren har. */
 function save() {
+    if (devMode) { log("info", "Would auto-save but developer mode is enabled"); return; };
+
     sendBatchToServer();
     log("info", "Saved.");
 }
@@ -195,8 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * 120000 MS = 2.0 MIN
     */
     setInterval(() => {
-        sendBatchToServer();
-        log("info", "Auto-saved.");
+        save();
     }, 120000);
 
     const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");
