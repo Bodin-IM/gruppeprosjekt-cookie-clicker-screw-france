@@ -12,7 +12,8 @@
     <button id="save" style="width: 250px; height: 50px;">Save</button>
     <button id="logout" style="width: 250px; height: 50px;">Log Out</button>
     <h1>Username: <span id="username"></span></h1>
-    <h1>Cash: <span id="cash"></span></h1> <!-- La stå! -->
+    <h1>Cash: <span id="Cash"></span></h1> <!-- La stå! -->
+    <h1>Cash Per Second: <span id="CPScounter"></span> </h1>
     <button id="Click"><img src="images/rat.jpg" alt="" id="clicker"></button>
     <div class="shop">
         <h1>SHOP</h1>
@@ -45,6 +46,7 @@
             <!--le shope-->
             <script src="src/main.js" type="module"></script>
             <script>
+                setInterval(giveCash, 1000);
                 var Upgrade1 = document.getElementById("Upgrade")
                 var Upgrade2 = document.getElementById("Upgrade_ac")
                 var Upgrade3 = document.getElementById("Upgrade_hg")
@@ -88,6 +90,9 @@
                 var EL_PG_price = document.getElementById("Parralell_universes")
                 var EL_V_price = document.getElementById("V01D")
                 var EL_J_price = document.getElementById("Jerald")
+                var EL_CPS_counter = document.getElementById("CPScounter")
+                var EL_Cash_Counter = document.getElementById("Cash")
+                
              
                 
                 
@@ -108,10 +113,10 @@
                 var dysonprice = 4200000
                 var genprice = 58000000
                 var timeprice = 321000000
-                var dimentionprice = 3740000000
-                var parralellprice = 12000000000
-                var voidprice = 100000000000
-                var jeraldprice = 666666666666
+                var dimentionprice = 374000000
+                var parralellprice = 1200000000
+                var voidprice = 10000000000
+                var jeraldprice = 66666666666
                 
                 var cursor = 0
                 var autoclicker = 0
@@ -134,7 +139,7 @@
                 var parralell = 0
                 var V01D = 0
                 var jerald = 0
-                var dollar = 666666666666666
+                var dollar = 200
                 var cps = 0
                 
                 function cursor_buy() {
@@ -433,6 +438,7 @@
                 }
                 
                 function cpscalc() {
+                    EL_Cash_Counter.innerHTML = dollar
                     cps = 0
                     cps += Math.round(cursor*1)
                     cps = cps + Math.round(autoclicker*5)
@@ -456,6 +462,13 @@
                     cps += Math.round(V01D*69696969)
                     cps += Math.round(jerald*666666666)
                     console.log("Cash per second:", cps)
+                    EL_CPS_counter.innerHTML = cps
+                }
+
+                function giveCash() {
+                    dollar += cps
+                    EL_Cash_Counter.innerHTML = dollar
+                    return;
                 }
 
                 Upgrade2.addEventListener("click", autoclick_buy);
@@ -481,7 +494,7 @@
                 Upgrade21.addEventListener("click", jerald_buy);
 
                 
-
+                
                 
                 </script>
         </body> <!--the code above is too messy (or not idk)-->
