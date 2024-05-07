@@ -105,23 +105,26 @@ function handleBuyAchievement() {
 let timestampClicks = [];
 function handleTimeAchievement() {
     function checkOldClicks() {
-        for(let i = timestampClicks.length - 1; i >= 0; i--) {
+        for(const i in timestampClicks) {
             const click = timestampClicks[i];
 
-            for(const achievement in achievements['time']) {
-                const end = achievements['time'][achievement]['end_after'];
-
-                if(Date.now() - click >= end) {
-                    
+            const filteredClicks = timestampClicks.filter(click => {
+                for (const achievement in achievements['time']) {
+                  const end = achievements['time'][achievement]['end_after'];
+                  if (Date.now() - click === end) {
+                    return false; // Exclude this click from the new array
+                  }
                 }
-            }
+                return true; // Keep this click in the new array
+              });
+              
+              timestampClicks = filteredClicks;
         }
     }
 
     timestampClicks.push(Date.now());
     console.log(timestampClicks);
     checkOldClicks();
-    console.log(timestampClicks);
 }
 
 /* Collects specified achievement by pushing to collectedAchievements and adding to localStorage */
