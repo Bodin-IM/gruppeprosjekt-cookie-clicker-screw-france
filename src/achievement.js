@@ -40,9 +40,15 @@ const achievements = {
         }
     },
     "time": {
+        "Test": {
+            "message": "You clicked 5 times or over in 10 seconds!",
+            "end_after": 10000,
+            "goal": 5
+        },
         "Flash": {
             "message": "You clicked 100 times in a single minute!",
-            "clicks": 100
+            "end_after": 60000,
+            "goal": 100
         }
     }
 };
@@ -58,6 +64,9 @@ function check(type) {
             break;
         case 'buy':
             handleBuyAchievement();
+            break;
+        case 'time':
+            handleTimeAchievement();
             break;
     }
 }
@@ -80,7 +89,7 @@ function handleClickAchievement() {
 
 function handleBuyAchievement() {
     for(const achievement in achievements['buy']) {
-        const goal = achievements['buy'][achievement]['goal']
+        const goal = achievements['buy'][achievement]['goal'];
 
         if(itemsBought >= goal && !collectedAchievements.includes(achievement)) {
             if(localStorage.getItem("achievements") && localStorage.getItem("achievements").includes(achievement)) {
@@ -93,18 +102,26 @@ function handleBuyAchievement() {
     }
 }
 
-function checkTimeAchievements() {
-}
-
+let timestampClicks = [];
 function handleTimeAchievement() {
-    recordedClicks++;
+    function checkOldClicks() {
+        for(let i = timestampClicks.length - 1; i >= 0; i--) {
+            const click = timestampClicks[i];
 
-    for(const achievement in achievements['time']) {
-        if(clicksThisMinute === achievements['time'][achievement]['timeframe']) {
-            collect('time', achievement);
-            clicksThisMinute = 0;
+            for(const achievement in achievements['time']) {
+                const end = achievements['time'][achievement]['end_after'];
+
+                if(Date.now() - click >= end) {
+                    
+                }
+            }
         }
     }
+
+    timestampClicks.push(Date.now());
+    console.log(timestampClicks);
+    checkOldClicks();
+    console.log(timestampClicks);
 }
 
 /* Collects specified achievement by pushing to collectedAchievements and adding to localStorage */
@@ -112,7 +129,7 @@ function collect(type, achievement) {
     collectedAchievements.push(achievement);
     localStorage.setItem("achievements", collectedAchievements.toString());
 
-    createAchievementNotification(achievement, achievements[type][achievement]["goal"], achievements[type][achievement]["message"]);
+    createAchievementNotification(achievement, achievements[type][achievement]["message"]);
 }
 
 export { check };

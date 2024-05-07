@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 /* Creates the notification HTML code and plays a sound on display */
-function createAchievementNotification(title, goal, message) {
+function createAchievementNotification(title, message) {
     let audio = new Audio('sfx/achievement.mp3');
 
     let notification = document.createElement("div");

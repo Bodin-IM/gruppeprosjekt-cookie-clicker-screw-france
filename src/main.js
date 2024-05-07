@@ -19,7 +19,6 @@ var totalCash = localStorage.getItem("cash") || 0;
 
 const BATCH_SIZE = 20;
 let clicks = 0;
-let timeAchievementClicks = 0;
 
 /* GJØR DENNE TIL TRUE */
 let devMode = true;
@@ -100,22 +99,10 @@ function updateCashVisualizer() {
 */
 function handleBatchClick() {
     clicks++;
-    timeAchievementClicks++;
     
     manageCash("inc");
     check("click");
-
-    clearTimeout(clickTimeout);
-    const clickTimeout = setTimeout(() => {
-        timeAchievementClicks = 0;
-    })
-/*
-    if(!devMode) {
-        if (clicks >= BATCH_SIZE) {
-            sendBatchToServer();
-        }
-    }
-    */
+    check("time");
 }
 
 /*
