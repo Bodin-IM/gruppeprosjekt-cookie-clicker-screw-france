@@ -11,7 +11,7 @@
 import { buy, sItems } from "./store.js";
 import { validateAuthentication } from "./auth.js";
 
-const cashVisualizer = document.getElementById("cash");
+
 const usernameVisualizer = document.getElementById("username");
 
 var totalCash = localStorage.getItem("cash");

@@ -13,6 +13,7 @@
     <button id="logout" style="width: 250px; height: 50px;">Log Out</button>
     <h1>Username: <span id="username"></span></h1>
     <h1>Cash: <span id="cash"></span></h1> <!-- La stå! -->
+    <h1>Cash Per Second: <span id="CPScounter"></span> </h1>
     <button id="Click"><img src="images/rat.jpg" alt="" id="clicker"></button>
     <div class="shop">
         <h1>SHOP</h1>
@@ -45,6 +46,9 @@
             <!--le shope-->
             <script src="src/main.js" type="module"></script>
             <script>
+                setInterval(giveCash, 10);
+                setInterval(giveCash100, 1000);
+                var Upgrade0 = document.getElementById("Upgrade_ms")
                 var Upgrade1 = document.getElementById("Upgrade")
                 var Upgrade2 = document.getElementById("Upgrade_ac")
                 var Upgrade3 = document.getElementById("Upgrade_hg")
@@ -88,6 +92,9 @@
                 var EL_PG_price = document.getElementById("Parralell_universes")
                 var EL_V_price = document.getElementById("V01D")
                 var EL_J_price = document.getElementById("Jerald")
+                var EL_CPS_counter = document.getElementById("CPScounter")
+                var EL_Cash_Counter = document.getElementById("cash")
+                var EL_Mouse_price = document.getElementById("mouse_price")
 
                 var Cursor_count = document.getElementById("cursor_count")
                 var Auto_count = document.getElementById("auto_count")
@@ -115,26 +122,27 @@
                 
                 
                 var cursorprice = 10
-                var motherprice = 550
-                var caseprice = 250
-                var ramprice = 1500
-                var homelessprice = 100
-                var autoclickprice = 25
-                var cpuprice = 4000
-                var coolerprice = 12500
-                var kardprice = 50000
-                var psuprice = 140000
-                var compprice = 210000
-                var birdprice = 350000
-                var sateliteprice = 500000
-                var roverprice = 1000000
-                var dysonprice = 4200000
-                var genprice = 58000000
-                var timeprice = 321000000
-                var dimentionprice = 3740000000
-                var parralellprice = 12000000000
-                var voidprice = 100000000000
-                var jeraldprice = 666666666666
+                var motherprice = 4520
+                var caseprice = 1550
+                var ramprice = 15000
+                var homelessprice = 520
+                var autoclickprice = 50
+                var cpuprice = 40000
+                var coolerprice = 125000
+                var kardprice = 500000
+                var psuprice = 1400000
+                var compprice = 2100000
+                var birdprice = 3500000
+                var sateliteprice = 5000000
+                var roverprice = 10000000
+                var dysonprice = 42000000
+                var genprice = 580000000
+                var timeprice = 3210000000
+                var dimentionprice = 37400000000
+                var parralellprice = 120000000000
+                var voidprice = 1000000000000
+                var jeraldprice = 6666666666666
+                var mouseprice = 5
                 
                 var cursor = 0
                 var autoclicker = 0
@@ -157,8 +165,9 @@
                 var parralell = 0
                 var V01D = 0
                 var jerald = 0
-                var dollar = 666666666666666
+                var dollar = 20000
                 var cps = 0
+                var mouse = 0
                 
                 function cursor_buy() {
                     if (dollar >= cursorprice) {
@@ -175,10 +184,24 @@
                         return;
                     }
                 }
+                function mouse_buy() {
+                    if (dollar >= mouseprice) {
+                        
+                        dollar -= mouseprice
+                        mouseprice = mouseprice + Math.round(mouseprice*3)
+                        EL_Mouse_price.innerHTML=mouseprice
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", mouseprice)
+                        mouse++
+                        console.log("Mouse count", mouse)
+                        cpscalc()
+                        return;
+                    }
+                }
                 function autoclick_buy() {
                     if (dollar >= autoclickprice) {
                         
-                        dollar -= cursorprice
+                        dollar -= autoclickprice
                         autoclickprice = autoclickprice + Math.round(autoclickprice/3)
                         EL_priceAuto.innerHTML=autoclickprice
                         console.log("Remaining cash;", dollar)
@@ -477,6 +500,7 @@
                 }
                 
                 function cpscalc() {
+                    EL_Cash_Counter.innerHTML = dollar
                     cps = 0
                     cps += Math.round(cursor*1)
                     cps = cps + Math.round(autoclicker*5)
@@ -500,6 +524,23 @@
                     cps += Math.round(V01D*69696969)
                     cps += Math.round(jerald*666666666)
                     console.log("Cash per second:", cps)
+                    EL_CPS_counter.innerHTML = cps
+                }
+
+                function giveCash() {
+                    if (cps >= 100) {
+                        dollar += cps/100
+                        dollar = Math.round(dollar + 0)
+                        EL_Cash_Counter.innerHTML = dollar
+                        return;
+                    }
+                }
+                function giveCash100() {
+                    if (cps < 100) {
+                        dollar += cps
+                        EL_Cash_Counter.innerHTML = dollar
+                        return;
+                    }
                 }
 
                 Upgrade2.addEventListener("click", autoclick_buy);
@@ -523,9 +564,10 @@
                 Upgrade19.addEventListener("click", parralell_buy);
                 Upgrade20.addEventListener("click", V01D_buy);
                 Upgrade21.addEventListener("click", jerald_buy);
+                Upgrade0.addEventListener("click", mouse_buy);
 
                 
-
+                
                 
                 </script>
         </body> <!--the code above is too messy (or not idk)-->
