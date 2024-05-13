@@ -49,7 +49,8 @@
             <div class="">
                 <div class="button_container2">
                     <button id="Upgrade_ms"><img src="Images/Extra rat.jpg" alt=""><h6 id="mouse_price">5</h6>Mouse upgrade</button>
-                    <button id="Upgrade_ECR"><img src="Images/Upg_CR.jpg" alt=""><h6 id="cursor_enc">500</h6>Enchanted cursor</button>
+                    <button id="Enchant"><img src="Images/Upg_CR.jpg" alt=""><h6 id="cursor_enc">130</h6>Enchanted cursor</button>
+                    <button id="Enchant_ac"><img src="Images/Upg_AC.jpg" alt=""><h6 id="auto_enc">560</h6>Enchanted cursor</button>
                 </div>
             </div>
         </div>
@@ -84,8 +85,9 @@
                 var Upgrade19 = document.getElementById("Upgrade_pu")
                 var Upgrade20 = document.getElementById("Upgrade_vd")
                 var Upgrade21 = document.getElementById("Upgrade_jr")
-                var Upgrade22 = document.getElementById("Upgrade_ECR")
                 var clicker = document.getElementById("clicky")
+                var Enc0 = document.getElementById("Enchant")
+                var Enc1 = document.getElementById("Enchant_ac")
                 
                 var EL_priceCursor = document.getElementById("cursor_price")
                 var EL_priceAuto = document.getElementById("auto_price")
@@ -111,7 +113,9 @@
                 var EL_CPS_counter = document.getElementById("CPScounter")
                 var EL_Cash_Counter = document.getElementById("cash")
                 var EL_Mouse_price = document.getElementById("mouse_price")
-                var EL_Enchant_cursor = document.getElementById("Enchant")
+                var EL_Enchant_cursor = document.getElementById("cursor_enc")
+                var EL_Enchant_auto = document.getElementById("auto_enc")
+                
                 
              
                 
@@ -138,6 +142,8 @@
                 var voidprice = 1000000000000
                 var jeraldprice = 6666666666666
                 var mouseprice = 5
+                var ENCcursorPrice = 130
+                var ENCautoPrice = 560
                 
                 var cursor = 0
                 var autoclicker = 0
@@ -163,6 +169,8 @@
                 var dollar = 0
                 var cps = 0
                 var mouse = 1
+                var cursorLVL = 1
+                var autoLVL = 1
                 
                 function cursor_buy() {
                     if (dollar >= cursorprice) {
@@ -189,6 +197,34 @@
                         console.log("New Price:", mouseprice)
                         mouse++
                         console.log("Mouse count", mouse)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function Cursor_Enchant() {
+                    if (dollar >= ENCcursorPrice) {
+                        
+                        dollar -= ENCcursorPrice
+                        ENCcursorPrice = ENCcursorPrice + Math.round(ENCcursorPrice*1.5)
+                        EL_Enchant_cursor.innerHTML=ENCcursorPrice
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", ENCcursorPrice)
+                        cursorLVL++
+                        console.log("cursor level", cursorLVL)
+                        cpscalc()
+                        return;
+                    }
+                }
+                function Auto_Enchant() {
+                    if (dollar >= ENCautoPrice) {
+                        
+                        dollar -= ENCautoPrice
+                        ENCautoPrice = ENCautoPrice + Math.round(ENCautoPrice*1.5)
+                        EL_Enchant_auto.innerHTML=ENCautoPrice
+                        console.log("Remaining cash;", dollar)
+                        console.log("New Price:", ENCautoPrice)
+                        autoLVL++
+                        console.log("cursor level", autoLVL)
                         cpscalc()
                         return;
                     }
@@ -484,26 +520,28 @@
                     EL_Cash_Counter.innerHTML = dollar
                     cps = 0
                     cps += Math.round(cursor*1)
-                    cps = cps + Math.round(autoclicker*5)
+                    cps *= cursorLVL
+                    cps = cps + Math.round(Math.round(autoclicker*5)*autoLVL)
                     cps = cps + Math.round(homeless*15)
                     cps = cps + Math.round(Case*50)
-                    cps = cps + Math.round(mother*100)
-                    cps = cps + Math.round(ram*200)
-                    cps = cps + Math.round(cpu*750)
-                    cps = cps + Math.round(cooler*1600)
-                    cps = cps + Math.round(kard*2800)
-                    cps = cps + Math.round(psu*7100)
-                    cps = cps + Math.round(comp*22500)
-                    cps = cps + Math.round(bird*42069)
-                    cps = cps + Math.round(satelite*69420)
-                    cps = cps + Math.round(rover*91820)
-                    cps = cps + Math.round(dyson*173000)
-                    cps = cps + Math.round(gen*420420)
-                    cps += Math.round(time*1000000)
-                    cps += Math.round(dimention*7050201)
-                    cps += Math.round(parralell*24782029)
-                    cps += Math.round(V01D*69696969)
-                    cps += Math.round(jerald*666666666)
+                    cps = cps + Math.round(mother*120)
+                    cps = cps + Math.round(ram*450)
+                    cps = cps + Math.round(cpu*1002)
+                    cps = cps + Math.round(cooler*7600)
+                    cps = cps + Math.round(kard*1500)
+                    cps = cps + Math.round(psu*19000)
+                    cps = cps + Math.round(comp*92500)
+                    cps = cps + Math.round(bird*120690)
+                    cps = cps + Math.round(satelite*694200)
+                    cps = cps + Math.round(rover*918200)
+
+                    cps = cps + Math.round(dyson*1730000)
+                    cps = cps + Math.round(gen*4204200)
+                    cps += Math.round(time*10000000)
+                    cps += Math.round(dimention*27050201)
+                    cps += Math.round(parralell*94782029)
+                    cps += Math.round(V01D*696969696)
+                    cps += Math.round(jerald*6666666666)
                     console.log("Cash per second:", cps)
                     EL_CPS_counter.innerHTML = cps
                 }
@@ -547,6 +585,8 @@
                 Upgrade21.addEventListener("click", jerald_buy);
                 Upgrade0.addEventListener("click", mouse_buy);
                 clicker.addEventListener("click", mouseclick);
+                Enc0.addEventListener("click", Cursor_Enchant);
+                Enc1.addEventListener("click", Auto_Enchant);
 
                 
                 
