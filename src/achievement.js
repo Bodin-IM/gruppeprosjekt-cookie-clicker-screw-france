@@ -148,21 +148,23 @@ function handleTimeAchievement() {
     }
 
     const sortedAchievements = sort();
-    const achievement = sortedAchievements[0];
+    const achievement = sortedAchievements[0] || null;
 
-    console.log(achievements.time);
-    console.log(sortedAchievements);
-
-    timestampClicks.push({ timestamp: new Date().getTime() });
-    timestampClicks = timestampClicks.filter(obj => {
-        const timestamp = obj.timestamp;
-        const currentTime = new Date().getTime();
-
-        return currentTime - timestamp < achievement.end_after;
-    });
-
-    if (timestampClicks.length >= achievement.goal && !collectedAchievements['time'][achievement]) {
-        collect('time', achievement.name);
+    if(achievement != null) {
+        timestampClicks.push({ timestamp: new Date().getTime() });
+        timestampClicks = timestampClicks.filter(obj => {
+            const timestamp = obj.timestamp;
+            const currentTime = new Date().getTime();
+    
+            return currentTime - timestamp < achievement.end_after;
+        });
+    
+        if (timestampClicks.length >= achievement.goal && !collectedAchievements['time'][achievement]) {
+            collect('time', achievement.name);
+        }
+    } else {
+        log("warning", "Achievement is null, no achievements left for collection.");
+        return;
     }
 }
 
