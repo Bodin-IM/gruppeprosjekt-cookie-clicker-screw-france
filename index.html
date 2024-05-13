@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/Style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker</title>
+    <script src="https://kit.fontawesome.com/85a36a292d.js" crossorigin="anonymous"></script>
+    <script type="module" src="src/main.js"></script>
+  </head>
+  <body>
+    <div class="notifications" id="notifications"></div>
+    <button id="save" style="width: 250px; height: 50px;">Save</button>
+    <button id="logout" style="width: 250px; height: 50px;">Log Out</button>
+    <button id="temp" style="width: 250px; height: 50px;">DEL Keys</button> <!-- TEMPORARY BUTTON -->
+    <h1>Username: <span id="username"></span></h1>
+    <h1>Cash: <span id="cash"></span></h1>
+    <button id="Click"><img src="images/rat.jpg" alt="" id="clicker"></button>
+    <div class="shop">
+      <h1>SHOP</h1>
+      <div class="Upgrade_buttons">
+        <div class="">
+          <div class="button_container">
+            <button id="Upgrade"><img src="Images/Mous.jpg" alt="">Cursor </button>
+            <button id="Upgrade_ac"><img src="Images/macro.jpg" alt="">Auto click </button>
+            <button id="Upgrade_hg"><img src="Images/homeless.jpg" alt="">Homeless guy </button>
+            <button id="Upgrade_c"><img src="Images/1by1legobrick.jpg" alt="">Case </button>
+            <button id="Upgrade_mb"><img src="Images/motherboard.jpg" alt="">Motherboard </button>
+            <button id="Upgrade_ram"><img src="Images/ham stick.jpg" alt="">RAM </button>
+            <button id="Upgrade_cpu"><img src="Images/cpu.jpg" alt="">Cpu </button>
+            <button id="Upgrade_cc"><img src="Images/fan.jpg" alt="">Cpu cooler </button>
+            <button id="Upgrade_gc"><img src="Images/grafik card.jpg" alt="">Graphics card </button>
+            <button id="Upgrade_psu"><img src="Images/PSU.jpg" alt="">Psu </button>
+            <button id="Upgrade_cp"><img src="Images/computr.jpg" alt="">Complete pc </button>
+            <button id="Upgrade_bt"><img src="Images/stupid bird.jpg" alt="">Bird thing </button>
+            <button id="Upgrade_st"><img src="Images/satelite.jpg" alt="">Satelite </button>
+            <button id="Upgrade_st"><img src="Images/Rover.jpg" alt="">Rover </button>
+            <button id="Upgrade_st"><img src="Images/Dyson Spheres.jpg" alt="">Dyson Sphere </button>
+            <button id="Upgrade_st"><img src="Images/Black Hole.jpg" alt="">Black Hole Generator </button>
+            <button id="Upgrade_st"><img src="Images/Time Machine.jpg" alt="">Time Machine </button>
+            <button id="Upgrade_st"><img src="Images/Dimentional Gate.png" alt="">Dimentional Gate </button>
+            <button id="Upgrade_st"><img src="Images/Parralell universes.jpg" alt="">Parralell universes </button>
+            <button id="Upgrade_st"><img src="" alt="">V01D </button>
+            <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt="">Jerald </button>
+          </div>
+        </div>
+        <!-- TEMPORARY SCRIPT -->
+        <script>
+          document.getElementById("temp").addEventListener("click", () => {
+            localStorage.clear();
+          });
+        </script>
+        <!-- replace cash system later-->
+        <script>
+          var Upgrade1 = document.getElementById("Upgrade")
+          var Upgrade2 = document.getElementById("Upgrade_ac")
+          var Upgrade3 = document.getElementById("Upgrade_hg")
+          var Upgrade4 = document.getElementById("Upgrade_c")
+          var cursorprice = 10
+          var dollar = 22
+
+          function cursor_buy() {
+            if (dollar >= cursorprice) {
+              dollar -= cursorprice
+              cursorprice = cursorprice + (cursorprice / 2)
+              console.log(dollar)
+              console.log(cursorprice)
+              return;
+            }
+          }
+
+          function autoclick_buy() {
+            if (cash >= autoprice) {
+              return;
+            }
+          }
+
+          function homeless_buy() {
+            if (cash >= autoprice) {
+              return;
+            }
+          }
+
+          function case_buy() {
+            if (cash >= autoprice) {
+              return;
+            }
+          }
+          Upgrade2.addEventListener("click", autoclick_buy);
+          Upgrade1.addEventListener("click", cursor_buy);
+          Upgrade3.addEventListener("click", homeless_buy);
+          Upgrade4.addEventListener("click", case_buy);
+        </script>
+  </body>
+  <!--the code above is too messy (or not idk)-->
+</html>
+<!--<div class=""><button id="Upgrade"><img src="Images/Mous.jpg" alt=""></button><button id="Upgrade_ac">Auto click, Price: 10</button><button id="Upgrade_hg">Homeless guy, Price: 25</button><button id="Upgrade_c">Case, Price: 75</button><button id="Upgrade_m">Motherboard, Price: 200</button><button id="Upgrade_ram">RAM, Price: 500</button><button id="Upgrade_cpu">Cpu, Price: 1k</button><button id="Upgrade_cc">Cpu cooler, Price: 2k</button><button id="Upgrade_gc">Graphics card, Price: 5k</button><button id="Upgrade_psu">Psu, Price: 10k</button><button id="Upgrade_cp">Complete pc, Price: 20k</button><button id="Upgrade_bt">Bird thing, Price: 50k</button><button id="Upgrade_bt">Satelite, Price: 100k</button></div> -->
