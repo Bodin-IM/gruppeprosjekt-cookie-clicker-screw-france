@@ -1,3 +1,9 @@
+const API = 'http://10.100.0.62:8080';
+
+function getAPI() {
+    return API;
+}
+
 function login() {
     const usernameField = document.getElementById('usernameField');
     const passwordField = document.getElementById('passwordField');
@@ -19,7 +25,7 @@ function login() {
             body: JSON.stringify(userData),
         };
 
-        fetch('http://10.100.0.62:8080/api/v1/user/login', requestOptions)
+        fetch(API + '/api/v1/user/login', requestOptions)
             .then(response => {
                 if (response.status === 403) {
                     response.json().then(json => {
@@ -65,7 +71,7 @@ function register() {
             body: JSON.stringify(userData),
         };
 
-        fetch('http://10.100.0.62:8080/api/v1/user/register', requestOptions)
+        fetch(API + '/api/v1/user/register', requestOptions)
             .then((response) => {
                 switch (response.status) {
                     case 409: // Conflict
@@ -103,7 +109,7 @@ function validateAuthentication() {
     };
 
     return new Promise((resolve, reject) => {
-        fetch('http://10.100.0.62:8080/api/v1/user/verify-token', requestOptions)
+        fetch(API + '/api/v1/user/verify-token', requestOptions)
             .then(response => {
                 if (response.status === 200) {
                     console.log("Authentication token valid, user authorized.")
@@ -142,4 +148,4 @@ function displayError(error) {
     }
 }
 
-export { login, register, validateAuthentication };
+export { login, register, validateAuthentication, getAPI };

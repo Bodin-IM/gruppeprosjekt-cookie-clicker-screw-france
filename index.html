@@ -12,6 +12,7 @@
     <div class="notifications" id="notifications"></div>
     <button id="save" style="width: 250px; height: 50px;">Save</button>
     <button id="logout" style="width: 250px; height: 50px;">Log Out</button>
+    <button id="temp" style="width: 250px; height: 50px;">DEL Keys</button> <!-- TEMPORARY BUTTON -->
     <h1>Username: <span id="username"></span></h1>
     <h1>Cash: <span id="cash"></span></h1>
     <button id="Click"><img src="images/rat.jpg" alt="" id="clicker"></button>
@@ -43,6 +44,12 @@
             <button id="Upgrade_st"><img src="Images/Jerald.jpg" alt="">Jerald </button>
           </div>
         </div>
+        <!-- TEMPORARY SCRIPT -->
+        <script>
+          document.getElementById("temp").addEventListener("click", () => {
+            localStorage.clear();
+          });
+        </script>
         <!-- replace cash system later-->
         <script>
           var Upgrade1 = document.getElementById("Upgrade")
