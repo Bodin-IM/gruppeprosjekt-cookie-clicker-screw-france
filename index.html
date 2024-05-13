@@ -136,7 +136,7 @@
                     var PG_count = document.getElementById("PG_count")
                     var V_count = document.getElementById("V_count")
                     var J_count = document.getElementById("J_count")
-                    var EL_Enchant_cursor = document.getElementById("Enchant")
+                    
                     
 
                     var cursorprice = 10
@@ -213,6 +213,34 @@
                             console.log("New Price:", mouseprice)
                             mouse++
                             console.log("Mouse count", mouse)
+                            cpscalc()
+                            return;
+                        }
+                    }
+                    function Cursor_Enchant() {
+                        if (dollar >= ENCcursorPrice) {
+                            
+                            dollar -= ENCcursorPrice
+                            ENCcursorPrice = ENCcursorPrice + Math.round(ENCcursorPrice*1.5)
+                            EL_Enchant_cursor.innerHTML=ENCcursorPrice
+                            console.log("Remaining cash;", dollar)
+                            console.log("New Price:", ENCcursorPrice)
+                            cursorLVL++
+                            console.log("cursor level", cursorLVL)
+                            cpscalc()
+                            return;
+                        }
+                    }
+                    function Auto_Enchant() {
+                        if (dollar >= ENCautoPrice) {
+                            
+                            dollar -= ENCautoPrice
+                            ENCautoPrice = ENCautoPrice + Math.round(ENCautoPrice*1.5)
+                            EL_Enchant_auto.innerHTML=ENCautoPrice
+                            console.log("Remaining cash;", dollar)
+                            console.log("New Price:", ENCautoPrice)
+                            autoLVL++
+                            console.log("cursor level", autoLVL)
                             cpscalc()
                             return;
                         }
