@@ -49,7 +49,7 @@
             <div class="">
                 <div class="button_container2">
                     <button id="Upgrade_ms"><img src="Images/Extra rat.jpg" alt=""><h6 id="mouse_price">5</h6>Mouse upgrade</button>
-                    <button id="Upgrade_ECR"><img src="Images/Upg_CR.jpg" alt=""><h6 id="cursor_enc">130</h6>Enchanted cursor</button>
+                    <button id="Enchant"><img src="Images/Upg_CR.jpg" alt=""><h6 id="cursor_enc">130</h6>Enchanted cursor</button>
                     <button id="Enchant_ac"><img src="Images/Upg_AC.jpg" alt=""><h6 id="auto_enc">460</h6>Enchanted cursor</button>
                 </div>
             </div>
@@ -178,6 +178,7 @@
                     var bird = 0
                     var satelite = 0
                     var rover = 0
+
                     var dyson = 0
                     var gen = 0
                     var time = 0
@@ -561,26 +562,28 @@
                         EL_Cash_Counter.innerHTML = dollar
                         cps = 0
                         cps += Math.round(cursor*1)
-                        cps = cps + Math.round(autoclicker*5)
+                        cps *= cursorLVL
+                        cps = cps + Math.round(Math.round(autoclicker*5)*autoLVL)
                         cps = cps + Math.round(homeless*15)
                         cps = cps + Math.round(Case*50)
-                        cps = cps + Math.round(mother*100)
-                        cps = cps + Math.round(ram*200)
-                        cps = cps + Math.round(cpu*750)
-                        cps = cps + Math.round(cooler*1600)
-                        cps = cps + Math.round(kard*2800)
-                        cps = cps + Math.round(psu*7100)
-                        cps = cps + Math.round(comp*22500)
-                        cps = cps + Math.round(bird*42069)
-                        cps = cps + Math.round(satelite*69420)
-                        cps = cps + Math.round(rover*91820)
-                        cps = cps + Math.round(dyson*173000)
-                        cps = cps + Math.round(gen*420420)
-                        cps += Math.round(time*1000000)
-                        cps += Math.round(dimention*7050201)
-                        cps += Math.round(parralell*24782029)
-                        cps += Math.round(V01D*69696969)
-                        cps += Math.round(jerald*666666666)
+                        cps = cps + Math.round(mother*120)
+                        cps = cps + Math.round(ram*450)
+                        cps = cps + Math.round(cpu*1002)
+                        cps = cps + Math.round(cooler*7600)
+                        cps = cps + Math.round(kard*1500)
+                        cps = cps + Math.round(psu*19000)
+                        cps = cps + Math.round(comp*92500)
+                        cps = cps + Math.round(bird*120690)
+                        cps = cps + Math.round(satelite*694200)
+                        cps = cps + Math.round(rover*918200)
+
+                        cps = cps + Math.round(dyson*1730000)
+                        cps = cps + Math.round(gen*4204200)
+                        cps += Math.round(time*10000000)
+                        cps += Math.round(dimention*27050201)
+                        cps += Math.round(parralell*94782029)
+                        cps += Math.round(V01D*696969696)
+                        cps += Math.round(jerald*6666666666)
                         console.log("Cash per second:", cps)
                         EL_CPS_counter.innerHTML = cps
                     }
