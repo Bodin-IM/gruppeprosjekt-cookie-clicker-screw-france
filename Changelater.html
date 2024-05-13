@@ -14,7 +14,7 @@
     <h1>Username: <span id="username"></span></h1>
     <h1>Cash: <span id="cash"></span></h1> <!-- La stå! -->
     <h1>Cash Per Second: <span id="CPScounter"></span> </h1>
-    <button id="Click"><img src="images/rat.jpg" alt="" id="clicker"></button>
+    <button id="Click"><img src="images/rat.jpg" alt="" id="clicky"></button>
     <div class="shop">
         <h1>SHOP</h1>
         <div class = "Upgrade_buttons">
@@ -70,6 +70,7 @@
                 var Upgrade19 = document.getElementById("Upgrade_pu")
                 var Upgrade20 = document.getElementById("Upgrade_vd")
                 var Upgrade21 = document.getElementById("Upgrade_jr")
+                var clicker = document.getElementById("clicky")
                 
                 var EL_priceCursor = document.getElementById("cursor_price")
                 var EL_priceAuto = document.getElementById("auto_price")
@@ -167,7 +168,7 @@
                 var jerald = 0
                 var dollar = 20000
                 var cps = 0
-                var mouse = 0
+                var mouse = 1
                 
                 function cursor_buy() {
                     if (dollar >= cursorprice) {
@@ -498,6 +499,12 @@
                         return;
                     }
                 }
+
+                function mouseclick() {
+                    dollar += (1*mouse)
+                    EL_Cash_Counter.innerHTML = dollar
+                    return;
+                }
                 
                 function cpscalc() {
                     EL_Cash_Counter.innerHTML = dollar
@@ -565,6 +572,7 @@
                 Upgrade20.addEventListener("click", V01D_buy);
                 Upgrade21.addEventListener("click", jerald_buy);
                 Upgrade0.addEventListener("click", mouse_buy);
+                clicker.addEventListener("click", mouseclick);
 
                 
                 
