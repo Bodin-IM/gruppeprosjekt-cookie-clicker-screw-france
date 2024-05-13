@@ -9,7 +9,7 @@
 */
 
 import { buy, sItems } from "./store.js";
-import { validateAuthentication } from "./auth.js";
+import { validateAuthentication, getAPI } from "./auth.js";
 import { check } from "./achievement.js";
 
 
@@ -118,7 +118,7 @@ function sendBatchToServer() {
         cash: clicks
     };
 
-    fetch('http://10.100.0.62:8080/api/v1/user/save-cash', {
+    fetch(getAPI() + '/api/v1/user/save-cash', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -166,7 +166,7 @@ function loadUserInformation() {
  * Hvis API'en svarer med brukerinformasjonen da returnerer vi svaret som JSON
 */
 function fetchUserDetails() {
-    return fetch('http://10.100.0.62:8080/api/v1/user/details', {
+    return fetch(getAPI() + '/api/v1/user/details', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
