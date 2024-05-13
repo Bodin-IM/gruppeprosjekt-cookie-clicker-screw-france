@@ -20,6 +20,7 @@
         <div class = "Upgrade_buttons">
             <div class="">
                 <div class="button_container">
+                    <button id="Upgrade_ms"><img src="Images/Extra rat.jpg" alt=""><h4 id="mouse_price">5</h4><h5 id="mouse_count">0</h5>Mouse upgrade</button>
                     <button id="Upgrade"><img src="Images/Mous.jpg" alt=""><h4 id="cursor_price">10</h4><h5 id="cursor_count">0</h5>Cursor</button>
                     <button id="Upgrade_ac"><img src="Images/macro.jpg" alt=""><h4 id="auto_price">25</h4> <h5 id="auto_count">0</h5> click</button>
                     <button id="Upgrade_hg"><img src="Images/homeless.jpg" alt=""><h4 id="Homeless_guy">100</h4> <h5 id="HG_count">0</h5>Homeless guy</button>
@@ -118,6 +119,7 @@
                 var PG_count = document.getElementById("PG_count")
                 var V_count = document.getElementById("V_count")
                 var J_count = document.getElementById("J_count")
+                var M_count = document.getElementById("mouse_count")
                 
              
                 
@@ -503,6 +505,7 @@
                 function mouseclick() {
                     dollar += (1*mouse)
                     EL_Cash_Counter.innerHTML = dollar
+                    M_count.innerHTML=mouse
                     return;
                 }
                 
