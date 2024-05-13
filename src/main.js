@@ -10,11 +10,12 @@
 
 import { buy, sItems } from "./store.js";
 import { validateAuthentication } from "./auth.js";
+import { check } from "./achievement.js";
 
 
 const usernameVisualizer = document.getElementById("username");
 
-var totalCash = localStorage.getItem("cash");
+var totalCash = localStorage.getItem("cash") || 0;
 
 const BATCH_SIZE = 20;
 let clicks = 0;
@@ -82,6 +83,9 @@ function log(type, msg) {
         case "warning":
             console.warn(`[WARNING] -> ${msg}`);
             break;
+        default:
+            console.log(`[${type.toUpperCase()}] -> ${msg}`);
+            break;
     }
 }
 
@@ -97,14 +101,10 @@ function updateCashVisualizer() {
 */
 function handleBatchClick() {
     clicks++;
+    
     manageCash("inc");
-/*
-    if(!devMode) {
-        if (clicks >= BATCH_SIZE) {
-            sendBatchToServer();
-        }
-    }
-    */
+    check("click");
+    check("time");
 }
 
 /*
@@ -184,6 +184,8 @@ function fetchUserDetails() {
 
 /* En funksjon som kan brukes for å kjapt lagre hvor mye cash brukeren har. */
 function save() {
+    if (devMode) { log("info", "Would auto-save but developer mode is enabled"); return; };
+
     sendBatchToServer();
     log("info", "Saved.");
 }
@@ -197,8 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
      * 120000 MS = 2.0 MIN
     */
     setInterval(() => {
-        sendBatchToServer();
-        log("info", "Auto-saved.");
+        save();
     }, 120000);
 
     const upgradeButtons = document.querySelectorAll(".shop .Upgrade_buttons button");

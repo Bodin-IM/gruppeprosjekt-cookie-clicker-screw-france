@@ -1,4 +1,4 @@
-/* Importerer funksjoner fra main.js */
+import { check } from "./achievement.js";
 import { log, getCash, manageCash } from "./main.js";
 
 // Dictionary som inneholder alle butikk-items
@@ -30,6 +30,7 @@ const sItems = {
 
 // Brukerens inventory
 let inventory = [];
+let itemsBought = 0;
 
 function getInventory() {
   return inventory;
@@ -60,6 +61,9 @@ function buy(item) {
   getInventory().push(getKeyByValue(sItems, item));
   log("info", `Pushed ${getKeyByValue(sItems, item)} to user inventory`);
   log("info", getInventory())
+
+  itemsBought++;
+  check("buy");
 }
 
 /*
@@ -81,4 +85,4 @@ function canAfford(item) {
     return getCash() >= item;
 }
 
-export { sItems, buy };
+export { sItems, buy, itemsBought };
