@@ -50,7 +50,9 @@
                 <div class="button_container2">
                     <button id="Upgrade_ms"><img src="Images/Extra rat.jpg" alt=""><h6 id="mouse_price">5</h6>Mouse upgrade</button>
                     <button id="Enchant"><img src="Images/Upg_CR.jpg" alt=""><h6 id="cursor_enc">130</h6>Enchanted cursor</button>
-                    <button id="Enchant_ac"><img src="Images/Upg_AC.jpg" alt=""><h6 id="auto_enc">460</h6>Enchanted cursor</button>
+                    <button id="Enchant_ac"><img src="Images/Upg_AC.jpg" alt=""><h6 id="auto_enc">460</h6>Overclocked Autoclicker</button>
+                    <button id="Enchant_HL"><img src="Images/Upg_HL.jpg" alt=""><h6 id="homeless_enc">1260</h6>Profesional Homeless</button>
+                    <button id="Enchant_Case"><img src="Images/Upg_Case.jpg" alt=""><h6 id="case_enc">8880</h6>Fortefied Case</button>
                 </div>
             </div>
         </div>
@@ -87,6 +89,8 @@
                     var clicker = document.getElementById("clicky")
                     var Enc0 = document.getElementById("Enchant")
                     var Enc1 = document.getElementById("Enchant_ac")
+                    var Enc2 = document.getElementById("Enchant_HL")
+                    var Enc3 = document.getElementById("Enchant_Case")
                     
                     var EL_priceCursor = document.getElementById("cursor_price")
                     var EL_priceAuto = document.getElementById("auto_price")
@@ -114,6 +118,8 @@
                     var EL_Mouse_price = document.getElementById("mouse_price")
                     var EL_Enchant_cursor = document.getElementById("cursor_enc")
                     var EL_Enchant_auto = document.getElementById("auto_enc")
+                    var EL_Enchant_homeless = document.getElementById("homeless_enc")
+                    var EL_Enchant_case = document.getElementById("case_enc")
 
                     var Cursor_count = document.getElementById("cursor_count")
                     var Auto_count = document.getElementById("auto_count")
@@ -162,7 +168,9 @@
                     var jeraldprice = 6666666666666
                     var mouseprice = 5  
                     var ENCcursorPrice = 130
-                    var ENCautoPrice = 460  
+                    var ENCautoPrice = 420  
+                    var ENChomelessPrice = 1260  
+                    var ENCcasePrice = 8880  
                 
                     var cursor = 0
                     var autoclicker = 0
@@ -191,6 +199,8 @@
                     var mouse = 1
                     var cursorLVL = 1
                     var autoLVL = 1
+                    var homelessLVL = 1
+                    var caseLVL = 1
 
                     function cpscalc() {
                         EL_Cash_Counter.innerHTML = dollar
@@ -198,13 +208,13 @@
                         cps += Math.round(cursor*1)
                         cps *= cursorLVL
                         cps = cps + Math.round(Math.round(autoclicker*5)*autoLVL)
-                        cps = cps + Math.round(homeless*15)
-                        cps = cps + Math.round(Case*50)
+                        cps = cps + Math.round(Math.round(homeless*15)*homelessLVL)
+                        cps = cps + Math.round(Math.round(Case*50)*caseLVL)
                         cps = cps + Math.round(mother*120)
                         cps = cps + Math.round(ram*450)
                         cps = cps + Math.round(cpu*1002)
-                        cps = cps + Math.round(cooler*7600)
-                        cps = cps + Math.round(kard*1500)
+                        cps = cps + Math.round(cooler*4600)
+                        cps = cps + Math.round(kard*8500)
                         cps = cps + Math.round(psu*19000)
                         cps = cps + Math.round(comp*92500)
                         cps = cps + Math.round(bird*120690)
@@ -277,6 +287,34 @@
                             console.log("New Price:", ENCautoPrice)
                             autoLVL++
                             console.log("cursor level", autoLVL)
+                            cpscalc()
+                            return;
+                        }
+                    }
+                    function Homeless_Enchant() {
+                        if (dollar >= ENChomelessPrice) {
+                            
+                            dollar -= ENChomelessPrice
+                            ENChomelessPrice = ENChomelessPrice + Math.round(ENChomelessPrice*1.5)
+                            EL_Enchant_homeless.innerHTML=ENChomelessPrice
+                            console.log("Remaining cash;", dollar)
+                            console.log("New Price:", ENChomelessPrice)
+                            homelessLVL++
+                            console.log("homeless level", homelessLVL)
+                            cpscalc()
+                            return;
+                        }
+                    }
+                    function Case_Enchant() {
+                        if (dollar >= ENCcasePrice) {
+                            
+                            dollar -= ENCcasePrice
+                            ENCcasePrice = ENCcasePrice + Math.round(ENCcasePrice*1.5)
+                            EL_Enchant_case.innerHTML=ENCcasePrice
+                            console.log("Remaining cash;", dollar)
+                            console.log("New Price:", ENCcasePrice)
+                            caseLVL++
+                            console.log("case level", caseLVL)
                             cpscalc()
                             return;
                         }
@@ -632,7 +670,8 @@
                     clicker.addEventListener("click", mouseclick);
                     Enc0.addEventListener("click", Cursor_Enchant);
                     Enc1.addEventListener("click", Auto_Enchant);
-
+                    Enc2.addEventListener("click", Homeless_Enchant);
+                    Enc3.addEventListener("click", Case_Enchant);
                     
                     
                     
