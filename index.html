@@ -56,6 +56,7 @@
                     <button id="Enchant_MB"><img src="Images/Upg_MB.jpg" alt=""><h6 id="mother_enc">24300</h6>Guilded Motherboard</button>
                     <button id="Enchant_RAM"><img src="Images/RAM.jpg" alt=""><h6 id="ram_enc">89403</h6>Ultra Ramifications</button>
                     <button id="Enchant_CPU"><img src="Images/Upg_CPU.jpg" alt=""><h6 id="cpu_enc">420000</h6>Graphicated CPU</button>
+                    <button id="Enchant_CC"><img src="Images/Upg_CC.jpg" alt=""><h6 id="cc_enc">1111111</h6>Frosty Cooler</button>
                 </div>
             </div>
         </div>
@@ -97,6 +98,7 @@
                     var Enc4 = document.getElementById("Enchant_MB")
                     var Enc5 = document.getElementById("Enchant_RAM")
                     var Enc6 = document.getElementById("Enchant_CPU")
+                    var Enc7 = document.getElementById("Enchant_CC")
                     
                     var EL_priceCursor = document.getElementById("cursor_price")
                     var EL_priceAuto = document.getElementById("auto_price")
@@ -129,6 +131,7 @@
                     var EL_Enchant_mother = document.getElementById("mother_enc")
                     var EL_Enchant_homeless = document.getElementById("ram_enc")
                     var EL_Enchant_case = document.getElementById("cpu_enc")
+                    var EL_Enchant_cooler = document.getElementById("cc_enc")
 
                     var Cursor_count = document.getElementById("cursor_count")
                     var Auto_count = document.getElementById("auto_count")
@@ -183,6 +186,7 @@
                     var ENCmotherPrice = 24300
                     var ENCramPrice = 89403
                     var ENCcpuPrice = 420000
+                    var ENCcoolerPrice = 1111111
                 
                     var cursor = 0
                     var autoclicker = 0
@@ -216,6 +220,7 @@
                     var motherLVL = 1
                     var ramLVL = 1
                     var cpuLVL = 1
+                    var coolerLVL = 1
 
                     function cpscalc() {
                         EL_Cash_Counter.innerHTML = dollar
@@ -228,7 +233,7 @@
                         cps = cps + Math.round(Math.round(mother*120)*motherLVL)
                         cps = cps + Math.round(Math.round(ram*450)*ramLVL)
                         cps = cps + Math.round(Math.round(cpu*1002)*cpuLVL)
-                        cps = cps + Math.round(cooler*4600)
+                        cps = cps + Math.round(Math.round(cooler*4600)*coolerLVL)
                         cps = cps + Math.round(kard*8500)
                         cps = cps + Math.round(psu*19000)
                         cps = cps + Math.round(comp*92500)
@@ -372,6 +377,20 @@
                             console.log("New Price:", ENCcpuPrice)
                             cpuLVL++
                             console.log("cpu level", cpuLVL)
+                            cpscalc()
+                            return;
+                        }
+                    }
+                    function Cooler_Enchant() {
+                        if (dollar >= ENCcoolerPrice) {
+                            
+                            dollar -= ENCcoolerPrice
+                            ENCcoolerPrice = ENCcoolerPrice + Math.round(ENCcoolerPrice*1.35)
+                            EL_Enchant_cooler.innerHTML=ENCcoolerPrice
+                            console.log("Remaining cash;", dollar)
+                            console.log("New Price:", ENCcoolerPrice)
+                            coolerLVL++
+                            console.log("cooler level", coolerLVL)
                             cpscalc()
                             return;
                         }
@@ -732,6 +751,7 @@
                     Enc4.addEventListener("click", Mother_Enchant);
                     Enc5.addEventListener("click", Ram_Enchant);
                     Enc6.addEventListener("click", Cpu_Enchant);
+                    Enc7.addEventListener("click", Cooler_Enchant);
                     
                     
                     
